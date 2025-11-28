@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Diamond Home Decor</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Reset & Base Styles --- */
+        :root {
+            --color-gold: #D4AF37;
+            --color-gold-light: #F3E5AB;
+            --color-black: #1A1A1A;
+            --color-dark: #0F0F0F;
+            --color-beige: #F5F5F0;
+            --color-gray: #8C8C8C;
+            --color-white: #FFFFFF;
+
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-black);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Typography --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-serif);
+            font-weight: normal;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-black);
+        }
+
+        .section-subtitle {
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .bg-beige {
+            background-color: var(--color-beige);
+        }
+
+        .bg-white {
+            background-color: var(--color-white);
+        }
+
+        .bg-dark {
+            background-color: var(--color-dark);
+            color: white;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 60vh;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-eyebrow {
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--color-gold-light);
+            font-size: 0.9rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            font-style: italic;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-link {
+            display: inline-block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero-link:hover {
+            color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer (Matches Homepage) --- */
+        footer {
+            background-color: var(--color-dark);
+            color: #888;
+            padding: 5rem 0 2rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Footer Brand */
+        .footer-brand {
+            padding: 0 15px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-white);
+            margin: 0;
+        }
+
+        .footer-logo-icon {
+            font-size: 24px;
+            color: var(--color-gold);
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+            line-height: 1.5;
+            max-width: 300px;
+        }
+
+        .footer-heading {
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #888;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-black);
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Desktop Layout for Footer */
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        /* --- SPECIFIC CONTACT PAGE CONTENT STYLES --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info-box {
+            padding-right: 2rem;
+        }
+
+        .info-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .info-label {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-label i {
+            color: var(--color-gold);
+            font-size: 1rem;
+        }
+
+        .info-value {
+            font-weight: 300;
+            color: #666;
+        }
+
+        .contact-form-wrapper {
+            background-color: var(--color-white);
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-gold);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            color: #888;
+        }
+
+        .form-control {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            padding: 0.75rem 0;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-bottom-color: var(--color-gold);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            border: none;
+            padding: 1rem 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--color-gold);
+            color: var(--color-black);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            padding: 1.5rem 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+        }
+
+        .faq-question:hover {
+            color: var(--color-gold);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+            color: var(--color-gold);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: #666;
+            font-weight: 300;
+            padding-right: 2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* --- Animation Utilities --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Media Queries --- */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1.5fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold);
+        }
+    </style>
+</head>
+
+<body>
+
+<section id="global-navbar">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #222;
+            --white: #ffffff;
+            --beige: #F5F5F0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:var(--font-sans);}
+        a{text-decoration:none !important;}
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top:0; left:0;
+            width:100%;
+            padding:1.3rem 0;
+         
+            z-index:999;
+            transition:0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background:var(--white);
+            box-shadow:0 2px 10px rgba(0,0,0,0.12);
+            padding:0.9rem 0;
+        }
+
+        /* NAV CONTAINER */
+        .nav-container {
+            max-width:1200px;
+            width:90%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        /* LOGO */
+        .logo img{
+            height:85px;
+            object-fit:contain;
+        }
+
+        /* DESKTOP MENU */
+        .nav-links {
+            display:none;
+            align-items:center;
+            gap:5rem;
+        }
+       /* DESKTOP MENU */
+.nav-links a {
+    color: white;   /* white at top */
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    transition: color 0.3s ease;
+}
+
+/* WHEN NAVBAR SCROLLS */
+.navbar.scrolled .nav-links a {
+    color: black !important;   /* turns black */
+}
+
+        .nav-links a:hover { color:var(--gold) !important; }
+
+        /* DESKTOP DROPDOWN */
+        .dropdown {
+            position:relative;
+            cursor:pointer;
+        }
+        .dropdown-content {
+            display:none;
+            position:absolute;
+            top:100%;
+            left:0;
+            background:var(--white);
+            min-width:200px;
+            border-top:3px solid var(--gold);
+            box-shadow:0 8px 16px rgba(0,0,0,0.15);
+        }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        .dropdown-content a {
+            padding:12px 18px;
+            display:block;
+            font-size:0.85rem;
+            color:var(--black) !important;
+            border-bottom:1px solid #eee;
+        }
+        .dropdown-content a:hover {
+            background:var(--beige);
+            color:var(--gold) !important;
+        }
+
+        /* BUTTON */
+        .top-btn {
+            background:var(--gold);
+            color:var(--black);
+            border:none;
+            padding:0.45rem 1rem;
+            border-radius:4px;
+            font-size:0.75rem;
+            font-weight:600;
+            text-transform:uppercase;
+        }
+
+        /* MOBILE MENU BTN */
+        .mobile-btn {
+            display:block;
+            background:none;
+            border:none;
+            font-size:1.6rem;
+            color:var(--black);
+            cursor:pointer;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position:fixed;
+            top:0; left:-280px;
+            width:280px;
+            height:100vh;
+            padding:2rem 1.5rem;
+            background:#fff;
+            display:flex;
+            flex-direction:column;
+            gap:1rem;
+            box-shadow:5px 0 15px rgba(0,0,0,0.1);
+            transition:0.35s ease;
+            z-index:1001;
+        }
+        .sidebar.active { left:0; }
+
+        .sidebar a, .dropdown-btn {
+            padding:0.8rem 0;
+            border-bottom:1px solid #eee;
+            color:#222;
+            text-transform:uppercase;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .sidebar a:hover, .dropdown-btn:hover { color:var(--gold); }
+
+        .dropdown-items {
+            display:none;
+            flex-direction:column;
+            padding-left:1rem;
+        }
+        .dropdown-items.show { display:flex; }
+
+        .arrow { transition:0.3s; }
+        .arrow.rotate { transform:rotate(90deg); }
+
+        /* CLOSE BTN */
+        .close-btn {
+            background:none;
+            border:none;
+            font-size:1.8rem;
+            align-self:flex-end;
+            cursor:pointer;
+            color:var(--black);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            display:none;
+            z-index:1000;
+        }
+        .overlay.active { display:block; }
+
+        /* RESPONSIVE */
+        @media(min-width:768px){
+            .nav-links{display:flex;}
+            .mobile-btn{display:none;}
+            .sidebar{display:none;}
+        }
+    </style>
+
+
+    <!-- NAV HTML -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <a href="home.html" class="logo">
+                <img src="images/logo1.jpg" alt="Logo">
+            </a>
+
+            <div class="nav-links">
+
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="product.html" class="drop-btn">Products</a>
+
+                    <div class="dropdown-content">
+                        <a href="mattress.html">Mattress</a>
+                        <a href="curtains.html">Curtains</a>
+                        <a href="sofa.html">Sofa</a>
+                        <a href="wallpaper.html">Wallpaper</a>
+                        <a href="carpet.html">Carpet</a>
+                        <a href="bed-cushion.html">Bed Cushion</a>
+                        <a href="pillows.html">Pillows</a>
+                    </div>
+                </div>
+
+             <a href="gallery.html">Gallery</a>
+        <a href="contact.html" style="color: var(--gold) !important;">Contact</a>
+           
+            </div>
+
+            <button class="top-btn" onclick="location.href='contact.html#appointment-form'">
+                <i class="fa-solid fa-calendar"></i> Book Appointment
+            </button>
+
+            <button class="mobile-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <button class="close-btn" id="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="dropdown-btn" id="products-toggle">
+            Products
+            <i class="fa-solid fa-chevron-right arrow" id="arrow"></i>
+        </div>
+
+        <div class="dropdown-items" id="products-menu">
+            <a href="mattress.html">Mattress</a>
+            <a href="curtains.html">Curtains</a>
+            <a href="sofa.html">Sofa</a>
+            <a href="wallpaper.html">Wallpaper</a>
+            <a href="carpet.html">Carpet</a>
+            <a href="bed-cushion.html">Bed Cushion</a>
+            <a href="pillows.html">Pillows</a>
+        </div>
+
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JS -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const productsToggle = document.getElementById("products-toggle");
+        const productsMenu = document.getElementById("products-menu");
+        const arrow = document.getElementById("arrow");
+
+        // Scroll effect
+        window.addEventListener("scroll", () => {
+            document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Open sidebar
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+
+        function closeSidebar() {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Mobile dropdown
+        productsToggle.addEventListener("click", () => {
+            productsMenu.classList.toggle("show");
+            arrow.classList.toggle("rotate");
+        });
+    </script>
+
+</section>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <!-- Background Image -->
+        <div class="hero-bg">
+            <img src="images/contact.jpg" alt="Contact Us - Diamond Home Decor">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content reveal">
+            <h1 class="hero-title">
+                Get In Touch. <br>
+                <span>Start The Journey.</span>
+            </h1>
+            <p class="hero-desc">
+                Your masterpiece begins with a conversation. Visit our atelier or schedule a private consultation with
+                our design team.
+            </p>
+            <a href="#contact-form-section" class="hero-link">
+                Send Message
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Contact Section -->
+    <section id="contact-form-section" class="section bg-beige">
+        <div class="container">
+            <div class="contact-grid">
+
+                <!-- Info Side -->
+                <div class="contact-info-box reveal">
+                    <span class="section-subtitle">Start a Conversation</span>
+                    <h2 class="section-title">Let's Create Your Masterpiece</h2>
+                    <p style="margin-bottom: 3rem; color: #666; font-weight: 300;">
+                        Whether you have a distinct vision or need guidance discovering your style, our team is ready to
+                        assist.
+                    </p>
+
+                    <div class="info-item">
+                        <div class="info-label"><i class="fa-solid fa-location-dot"></i> Atelier Address</div>
+                        <div class="info-value">
+                            101 Luxury Lane, Suite 500<br>
+                            Beverly Hills, CA 90210
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label"><i class="fa-solid fa-phone"></i> Phone & Concierge</div>
+                        <div class="info-value">
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label"><i class="fa-solid fa-envelope"></i> Email</div>
+                        <div class="info-value">
+                            <a href="mailto:design@diamonddecor.com">design@diamonddecor.com</a><br>
+                            <a href="mailto:press@diamonddecor.com">press@diamonddecor.com</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label"><i class="fa-regular fa-clock"></i> Hours</div>
+                        <div class="info-value">
+                            Mon - Fri: 9:00 AM - 6:00 PM<br>
+                            Sat: By Appointment Only
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="contact-form-wrapper reveal" style="transition-delay: 0.2s;">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" placeholder="Jane">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" placeholder="jane@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="+1 (555) 000-0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Interest</label>
+                            <select class="form-control" style="color: #666;">
+                                <option>Full Interior Renovation</option>
+                                <option>Furniture Selection</option>
+                                <option>Lighting Design</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" placeholder="Tell us about your project..."></textarea>
+                        </div>
+
+                        <button type="button" onclick="submitForm()" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Google Maps Section -->
+    <section class="section bg-white" style="padding-top: 3rem; padding-bottom: 4rem;">
+        <div class="container">
+            <div class="map-container"
+                style="border-radius: 8px; overflow: hidden; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3784.2909610331094!2d73.82207587519041!3d18.470475182613384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTjCsDI4JzEzLjciTiA3M8KwNDknMjguNyJF!5e0!3m2!1sen!2sin!4v1763621318228!5m2!1sen!2sin"
+                    width="100%" height="450" style="border:0; display: block;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-white" style="padding-top: 2rem;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-subtitle">Common Questions</span>
+                <h2 class="section-title">Frequently Asked</h2>
+            </div>
+
+            <div class="faq-container reveal">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What defines the Diamond design style?
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our style is a sophisticated blend of modern minimalism and timeless classic luxury. We focus on
+                        high-quality materials, neutral palettes with bold accents, and functional elegance.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you work internationally?
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. While our main atelier is in Beverly Hills, we have successfully completed residential and
+                        commercial projects in London, Dubai, Paris, and Tokyo.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the typical timeline for a project?
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Timelines vary based on scope. A single room furnishing may take 6-8 weeks, while a full
+                        structural renovation often spans 6-12 months from concept to completion.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="footer-section" style="width:100%; display:block;">
+
+<!-- =======================
+      FOOTER (INLINE CSS)
+=========================== -->
+<footer style="background:#111; color:#fff; padding:70px 0 0; font-family:'Lato', sans-serif;">
+
+  <div style="width:90%; max-width:1400px; margin:auto;">
+
+    <!-- Gold Line -->
+    <div style="
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, #d4af37, #f9e6a7, #d4af37);
+      margin-bottom:40px;
+    "></div>
+
+    <!-- GRID -->
+    <div class="footer-grid" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+    ">
+
+      <!-- BRAND -->
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; transform:translateY(-10px);">
+          <img 
+            src="images/logo1-removebg-preview.png"
+            alt="Diamond Logo"
+            style="width:160px; height:auto; display:block;"
+          >
+        </div>
+
+        <p style="
+          font-size:16px;
+          color:#ccc;
+          line-height:1.6;
+          margin-top:15px;
+        ">
+          Setting the benchmark for luxury interiors — where artistry, comfort,
+          and elegance blend seamlessly.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">QUICK LINKS</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html" style="text-decoration:none; color:#eee; font-size:16px;">Home</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./about.html" style="text-decoration:none; color:#eee; font-size:16px;">About Us</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html#services" style="text-decoration:none; color:#eee; font-size:16px;">Products</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./gallery.html" style="text-decoration:none; color:#eee; font-size:16px;">Gallery</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./contact.html" style="text-decoration:none; color:#eee; font-size:16px;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">CONTACT</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-location-dot" style="color:#d4af37; margin-right:10px;"></i>
+            101 Luxury Lane, Beverly Hills, CA
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-phone" style="color:#d4af37; margin-right:10px;"></i>
+            +1 (555) 123-4567
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-envelope" style="color:#d4af37; margin-right:10px;"></i>
+            design@diamonddecor.com
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:12px; margin-top:15px;">
+          <img src="images/gallery/Instagram_icon.png.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/facebook.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/linkedin.png" style="width:32px; height:32px; cursor:pointer;">
+       
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">OUR WORLD</div>
+
+        <p style="color:#ccc; font-size:17px; line-height:1.6;">
+          Discover handcrafted luxury, curated pieces, and timeless designs
+          that elevate your living spaces.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div style="
+      margin-top:50px;
+      border-top:1px solid #333;
+      padding:20px 0;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+    ">
+      © 2025 DIAMOND HOME DECOR. ALL RIGHTS RESERVED.<br>
+      DESIGNED & DEVELOPED BY 
+      <a href="https://dwi4u.com/index.html" target="_blank" style="color:#d4af37; text-decoration:none;">DW INNOVATION PVT. LTD.</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RESPONSIVE CSS INSIDE SECTION -->
+<style>
+  #footer-section .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 900px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+</section>
+
+    <!-- Footer Styles -->
+    <style>
+        .footer-grid {
+            font-size: 1.1rem;
+            /* Increased base font size */
+        }
+
+        .footer-heading {
+            font-size: 1.4rem;
+            /* Increased heading size */
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links li a {
+            font-size: 1.1rem;
+            /* Increased link size */
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: var(--color-gold);
+        }
+
+        .contact-info li {
+            font-size: 1.1rem;
+            /* Increased contact info size */
+            margin-bottom: 0.8rem;
+        }
+
+        .copyright {
+            font-size: 1rem;
+            /* Slightly larger copyright text */
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        /* =========================================
+           NAVBAR LOGIC
+           ========================================= */
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Change background on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+
+            // Navbar bg logic for visibility when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                navbar.classList.add('scrolled');
+            } else if (window.scrollY <= 50) {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Custom function for the Book Appointment button on this page
+        function scrollToForm() {
+            document.getElementById('contact-form-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        /* =========================================
+           PAGE CONTENT LOGIC
+           ========================================= */
+
+        // Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger once on load
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                // Close others
+                faqItems.forEach(i => {
+                    if (i !== item) i.classList.remove('active');
+                });
+                // Toggle current
+                item.classList.toggle('active');
+            });
+        });
+
+        // Form Submit with WhatsApp
+        function submitForm() {
+            const form = document.getElementById('contactForm');
+            const firstName = form.querySelector('input[placeholder="Jane"]').value || 'Not provided';
+            const lastName = form.querySelector('input[placeholder="Doe"]').value || '';
+            const email = form.querySelector('input[type="email"]').value || 'Not provided';
+            const phone = form.querySelector('input[type="tel"]').value || 'Not provided';
+            const interest = form.querySelector('select').value || 'Not specified';
+            const message = form.querySelector('textarea').value || 'No message provided';
+
+            // Format the message for WhatsApp
+            const whatsappMessage = `*New Contact Form Submission*%0A%0A` +
+                `*Name:* ${firstName} ${lastName}%0A` +
+                `*Email:* ${email}%0A` +
+                `*Phone:* ${phone}%0A` +
+                `*Interest:* ${interest}%0A%0A` +
+                `*Message:*%0A${message}`;
+
+            // Open WhatsApp with the pre-filled message
+            window.open(`https://wa.me/919595224171?text=${whatsappMessage}`, '_blank');
+
+            // Show success message
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            btn.innerText = "Message Sent!";
+            btn.style.backgroundColor = "#16a34a";
+            btn.style.color = "white";
+
+            // Reset form and button after delay
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.backgroundColor = "";
+                btn.style.color = "";
+                form.reset();
+            }, 3000);
+        }
+
+        // Products Dropdown Click Functionality
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        const dropbtn = document.querySelector('.dropbtn');
+
+        if (dropdown && dropdownContent && dropbtn) {
+            // Toggle dropdown on click
+            dropbtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdownContent.style.display = 'none';
+                }
+            });
+
+            // Allow clicking on dropdown items to navigate
+            const dropdownLinks = dropdownContent.querySelectorAll('a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    dropdownContent.style.display = 'none';
+                });
+            });
+        }
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919595224171" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float i {
+            margin-top: 2px;
+        }
+    </style>
+</body>
+
+</html>

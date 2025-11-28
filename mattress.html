@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Mattresses | Diamond Home Decor</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+<section id="global-navbar">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #222;
+            --white: #ffffff;
+            --beige: #F5F5F0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:var(--font-sans);}
+        a{text-decoration:none !important;}
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top:0; left:0;
+            width:100%;
+            padding:1.3rem 0;
+         
+            z-index:999;
+            transition:0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background:var(--white);
+            box-shadow:0 2px 10px rgba(0,0,0,0.12);
+            padding:0.9rem 0;
+        }
+
+        /* NAV CONTAINER */
+        .nav-container {
+            max-width:1200px;
+            width:90%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        /* LOGO */
+        .logo img{
+            height:85px;
+            object-fit:contain;
+        }
+
+        /* DESKTOP MENU */
+        .nav-links {
+            display:none;
+            align-items:center;
+            gap:5rem;
+        }
+       /* DESKTOP MENU */
+.nav-links a {
+    color: white;   /* white at top */
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    transition: color 0.3s ease;
+}
+
+/* WHEN NAVBAR SCROLLS */
+.navbar.scrolled .nav-links a {
+    color: black !important;   /* turns black */
+}
+
+        .nav-links a:hover { color:var(--gold) !important; }
+
+        /* DESKTOP DROPDOWN */
+        .dropdown {
+            position:relative;
+            cursor:pointer;
+        }
+        .dropdown-content {
+            display:none;
+            position:absolute;
+            top:100%;
+            left:0;
+            background:var(--white);
+            min-width:200px;
+            border-top:3px solid var(--gold);
+            box-shadow:0 8px 16px rgba(0,0,0,0.15);
+        }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        .dropdown-content a {
+            padding:12px 18px;
+            display:block;
+            font-size:0.85rem;
+            color:var(--black) !important;
+            border-bottom:1px solid #eee;
+        }
+        .dropdown-content a:hover {
+            background:var(--beige);
+            color:var(--gold) !important;
+        }
+
+        /* BUTTON */
+        .top-btn {
+            background:var(--gold);
+            color:var(--black);
+            border:none;
+            padding:0.45rem 1rem;
+            border-radius:4px;
+            font-size:0.75rem;
+            font-weight:600;
+            text-transform:uppercase;
+        }
+
+        /* MOBILE MENU BTN */
+        .mobile-btn {
+            display:block;
+            background:none;
+            border:none;
+            font-size:1.6rem;
+            color:var(--black);
+            cursor:pointer;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position:fixed;
+            top:0; left:-280px;
+            width:280px;
+            height:100vh;
+            padding:2rem 1.5rem;
+            background:#fff;
+            display:flex;
+            flex-direction:column;
+            gap:1rem;
+            box-shadow:5px 0 15px rgba(0,0,0,0.1);
+            transition:0.35s ease;
+            z-index:1001;
+        }
+        .sidebar.active { left:0; }
+
+        .sidebar a, .dropdown-btn {
+            padding:0.8rem 0;
+            border-bottom:1px solid #eee;
+            color:#222;
+            text-transform:uppercase;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .sidebar a:hover, .dropdown-btn:hover { color:var(--gold); }
+
+        .dropdown-items {
+            display:none;
+            flex-direction:column;
+            padding-left:1rem;
+        }
+        .dropdown-items.show { display:flex; }
+
+        .arrow { transition:0.3s; }
+        .arrow.rotate { transform:rotate(90deg); }
+
+        /* CLOSE BTN */
+        .close-btn {
+            background:none;
+            border:none;
+            font-size:1.8rem;
+            align-self:flex-end;
+            cursor:pointer;
+            color:var(--black);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            display:none;
+            z-index:1000;
+        }
+        .overlay.active { display:block; }
+
+        /* RESPONSIVE */
+        @media(min-width:768px){
+            .nav-links{display:flex;}
+            .mobile-btn{display:none;}
+            .sidebar{display:none;}
+        }
+    </style>
+
+
+    <!-- NAV HTML -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <a href="home.html" class="logo">
+                <img src="images/logo1.jpg" alt="Logo">
+            </a>
+
+            <div class="nav-links">
+
+                  <a href="home.html" class="drop-btn">Home</a>
+                 
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+     
+                      <a href="product.html" style="color: var(--gold) !important;">Products</a>
+
+                    <div class="dropdown-content">
+                        <a href="mattress.html">Mattress</a>
+                        <a href="curtains.html">Curtains</a>
+                        <a href="sofa.html">Sofa</a>
+                        <a href="wallpaper.html">Wallpaper</a>
+                        <a href="carpet.html">Carpet</a>
+                        <a href="bed-cushion.html">Bed Cushion</a>
+                        <a href="pillows.html">Pillows</a>
+                    </div>
+                </div>
+
+             <a href="gallery.html">Gallery</a>
+
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <button class="top-btn" onclick="location.href='contact.html#appointment-form'">
+                <i class="fa-solid fa-calendar"></i> Book Appointment
+            </button>
+
+            <button class="mobile-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <button class="close-btn" id="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="dropdown-btn" id="products-toggle">
+            Products
+            <i class="fa-solid fa-chevron-right arrow" id="arrow"></i>
+        </div>
+
+        <div class="dropdown-items" id="products-menu">
+            <a href="mattress.html">Mattress</a>
+            <a href="curtains.html">Curtains</a>
+            <a href="sofa.html">Sofa</a>
+            <a href="wallpaper.html">Wallpaper</a>
+            <a href="carpet.html">Carpet</a>
+            <a href="bed-cushion.html">Bed Cushion</a>
+            <a href="pillows.html">Pillows</a>
+        </div>
+
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JS -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const productsToggle = document.getElementById("products-toggle");
+        const productsMenu = document.getElementById("products-menu");
+        const arrow = document.getElementById("arrow");
+
+        // Scroll effect
+        window.addEventListener("scroll", () => {
+            document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Open sidebar
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+
+        function closeSidebar() {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Mobile dropdown
+        productsToggle.addEventListener("click", () => {
+            productsMenu.classList.toggle("show");
+            arrow.classList.toggle("rotate");
+        });
+    </script>
+
+</section>
+
+    <!-- Hero Section -->
+    <header class="product-hero"
+        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/product_img/mattresses_01.jpg');">
+        <div class="container reveal">
+            <h1 class="hero-title">Premium Mattresses</h1>
+            <p class="hero-desc">Experience the ultimate sleep comfort with our scientifically designed, luxury
+                mattresses.</p>
+        </div>
+    </header>
+
+    <!-- Product Grid -->
+<section id="product-showcase" style="padding:80px 0; background:#ffffff; font-family:'Lato', sans-serif;">
+
+<style>
+    #product-showcase .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    #product-showcase .product-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #product-showcase .product-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        transition: 0.4s ease;
+        display: block;
+    }
+
+    #product-showcase .hover-box {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.3s ease;
+    }
+
+    #product-showcase .hover-box a {
+        background: #d4af37;
+        color: #000;
+        padding: 14px 32px;
+        font-weight: 700;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    #product-showcase .product-card:hover .hover-box {
+        opacity: 1;
+    }
+
+    #product-showcase .product-card:hover .product-img {
+        transform: scale(1.08);
+    }
+</style>
+
+    <div style="width:90%; max-width:1300px; margin:auto;">
+
+        <!-- Heading -->
+        <div style="text-align:center; margin-bottom:60px;">
+            <span style="
+                font-size:14px;
+                letter-spacing:4px;
+                color:#d4af37;
+                font-weight:700;
+                text-transform:uppercase;
+            ">Premium Collection</span>
+
+            <h2 style="
+                font-family:'Playfair Display', serif;
+                font-size:42px;
+                color:#1a1a1a;
+                margin-top:10px;
+            ">
+                Our Featured Mattresses
+            </h2>
+
+            <p style="
+                max-width:650px;
+                margin:auto;
+                font-size:16px;
+                color:#555;
+                line-height:1.7;
+                margin-top:10px;
+            ">
+                Explore our range of luxury mattresses crafted for exceptional comfort and long-lasting durability.
+                Every design is tailored to give you the perfect sleep experience.
+            </p>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="images/product_img/mattresses_02.jpg" class="product-img" alt="Product 1">
+
+                <div class="hover-box">
+                    <a href="contact.html">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="images/product_img/mattresses_03.jpg" class="product-img" alt="Product 2">
+                <div class="hover-box">
+                    <a href="contact.html">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="images/product_img/mattresses_05.jpg" class="product-img" alt="Product 3">
+                <div class="hover-box">
+                    <a href="contact.html">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="images/product_img/mattresses_04.jpg" class="product-img" alt="Product 4">
+                <div class="hover-box">
+                    <a href="contact.html">Enquire Now</a>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- Footer -->
+<section id="footer-section" style="width:100%; display:block;">
+
+<!-- =======================
+      FOOTER (INLINE CSS)
+=========================== -->
+<footer style="background:#111; color:#fff; padding:70px 0 0; font-family:'Lato', sans-serif;">
+
+  <div style="width:90%; max-width:1400px; margin:auto;">
+
+    <!-- Gold Line -->
+    <div style="
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, #d4af37, #f9e6a7, #d4af37);
+      margin-bottom:40px;
+    "></div>
+
+    <!-- GRID -->
+    <div class="footer-grid" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+    ">
+
+      <!-- BRAND -->
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; transform:translateY(-10px);">
+          <img 
+            src="images/logo1-removebg-preview.png"
+            alt="Diamond Logo"
+            style="width:160px; height:auto; display:block;"
+          >
+        </div>
+
+        <p style="
+          font-size:16px;
+          color:#ccc;
+          line-height:1.6;
+          margin-top:15px;
+        ">
+          Setting the benchmark for luxury interiors — where artistry, comfort,
+          and elegance blend seamlessly.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">QUICK LINKS</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html" style="text-decoration:none; color:#eee; font-size:16px;">Home</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./about.html" style="text-decoration:none; color:#eee; font-size:16px;">About Us</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html#services" style="text-decoration:none; color:#eee; font-size:16px;">Products</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./gallery.html" style="text-decoration:none; color:#eee; font-size:16px;">Gallery</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./contact.html" style="text-decoration:none; color:#eee; font-size:16px;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">CONTACT</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-location-dot" style="color:#d4af37; margin-right:10px;"></i>
+            101 Luxury Lane, Beverly Hills, CA
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-phone" style="color:#d4af37; margin-right:10px;"></i>
+            +1 (555) 123-4567
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-envelope" style="color:#d4af37; margin-right:10px;"></i>
+            design@diamonddecor.com
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:12px; margin-top:15px;">
+          <img src="images/gallery/Instagram_icon.png.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/facebook.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/linkedin.png" style="width:32px; height:32px; cursor:pointer;">
+       
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">OUR WORLD</div>
+
+        <p style="color:#ccc; font-size:17px; line-height:1.6;">
+          Discover handcrafted luxury, curated pieces, and timeless designs
+          that elevate your living spaces.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div style="
+      margin-top:50px;
+      border-top:1px solid #333;
+      padding:20px 0;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+    ">
+      © 2025 DIAMOND HOME DECOR. ALL RIGHTS RESERVED.<br>
+      DESIGNED & DEVELOPED BY 
+      <a href="https://dwi4u.com/index.html" target="_blank" style="color:#d4af37; text-decoration:none;">DW INNOVATION PVT. LTD.</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RESPONSIVE CSS INSIDE SECTION -->
+<style>
+  #footer-section .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 900px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+</section>
+
+    <!-- WhatsApp Floating Button -->
+ <a href="https://wa.me/9195952 24171" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="home.js"></script>
+</body>
+
+</html>

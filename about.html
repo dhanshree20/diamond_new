@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Diamond Home Decor</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           SHARED STYLES & UTILITIES
+           ========================================= */
+        :root {
+            --color-gold: #D4AF37;
+            --color-gold-light: #F3E5AB;
+            --color-black: #1A1A1A;
+            --color-dark: #0F0F0F;
+            --color-beige: #F5F5F0;
+            --color-gray: #8C8C8C;
+            --color-white: #FFFFFF;
+
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-black);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-serif);
+            font-weight: normal;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-black);
+        }
+
+        .section-subtitle {
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Layout Utilities */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .bg-beige {
+            background-color: var(--color-beige);
+        }
+
+        .bg-white {
+            background-color: var(--color-white);
+        }
+
+        .bg-dark {
+            background-color: var(--color-dark);
+            color: white;
+        }
+
+        
+        /* =========================================
+           HERO SECTION (Updated Padding)
+           ========================================= */
+        .hero-modern {
+            position: relative;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            padding-top: 90px;
+            /* Add padding to account for fixed header */
+            overflow: hidden;
+            box-sizing: border-box;
+            /* Ensure padding is included in height calculation */
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            height: 100%;
+            align-items: center;
+        }
+
+        .hero-left {
+            padding: 2rem 0;
+            z-index: 2;
+        }
+
+        .hero-title-large {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--color-black);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text {
+            color: #555;
+            margin-bottom: 2.5rem;
+            max-width: 450px;
+            font-weight: 300;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-black {
+            background-color: var(--color-black);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-black:hover {
+            background-color: var(--color-gold);
+        }
+
+        .btn-white-outline {
+            border: 1px solid #ccc;
+            background-color: transparent;
+            color: var(--color-black);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-white-outline:hover {
+            border-color: var(--color-black);
+        }
+
+        .mini-gallery {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .mini-thumb {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .mini-thumb:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-black);
+        }
+
+        .hero-right {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            height: 100%;
+            background-color: #e6e6e6;
+            z-index: 1;
+        }
+
+        .hero-main-img {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            height: 85%;
+            object-fit: cover;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            transform: translateX(-10%);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-10%);
+            }
+        }
+
+        .hero-left {
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        .hero-main-img {
+            animation: slideInRight 1s ease forwards;
+        }
+
+        /* --- WHO WE ARE STYLES --- */
+        .who-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .who-highlight {
+            color: var(--color-black);
+            font-weight: 400;
+        }
+
+        .signer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .signer-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--color-black);
+        }
+
+        /* --- WHAT MAKES US DIFFERENT STYLES --- */
+        #difference {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0F0F0F, #1a1a1a);
+        }
+
+        #difference::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            animation: rotateBg 60s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes rotateBg {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diff-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            text-align: left;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diff-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background-color: var(--color-gold);
+            transition: height 0.4s ease;
+        }
+
+        .diff-card:hover::before {
+            height: 100%;
+        }
+
+        .diff-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .diff-number {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-family: var(--font-serif);
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.02);
+            line-height: 1;
+            transition: all 0.5s ease;
+            z-index: 0;
+        }
+
+        .diff-card:hover .diff-number {
+            color: rgba(212, 175, 55, 0.1);
+            transform: translateY(10px);
+        }
+
+        .diff-icon-box {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diff-icon-box i {
+            font-size: 2rem;
+            color: var(--color-gold);
+            transition: transform 0.4s ease;
+        }
+
+        .diff-card:hover .diff-icon-box i {
+            transform: scale(1.2);
+        }
+
+        .diff-title {
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- GALLERY STYLES --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 280px);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1);
+        }
+
+        /* Mosaic Layout */
+        .gallery-item:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: 1;
+            grid-row: 2 / span 2;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .gallery-item:nth-child(6) {
+            grid-column: 3;
+            grid-row: 2 / span 2;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close-lightbox:hover,
+        .close-lightbox:focus {
+            color: var(--color-gold);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-rows: repeat(3, 200px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                height: 300px;
+            }
+
+            .lightbox-content {
+                width: 95%;
+            }
+        }
+
+
+        /* =========================================
+           FOOTER STYLES (Matches Homepage)
+           ========================================= */
+        footer {
+            background-color: var(--color-dark);
+            color: #888;
+            padding: 5rem 0 2rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Footer Brand */
+        .footer-brand {
+            padding: 0 15px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-white);
+            margin: 0;
+        }
+
+        .footer-logo-icon {
+            font-size: 24px;
+            color: var(--color-gold);
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+            line-height: 1.5;
+            max-width: 300px;
+        }
+
+        .footer-heading {
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #888;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-black);
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Animation Utils */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .top-right-btn {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-title-large {
+                font-size: 4.5rem;
+            }
+
+            .diff-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-title-large {
+                font-size: 5.5rem;
+            }
+
+            .hero-bg-shape {
+                right: -10%;
+            }
+        }
+
+        /* Workflow Mobile */
+        @media (max-width: 992px) {
+            .workflow-container {
+                display: block;
+                min-height: auto;
+                padding-left: 2rem;
+            }
+
+            .workflow-line {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 20px;
+                background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+                transform: none;
+            }
+
+            .timeline-items-wrapper {
+                flex-direction: column;
+            }
+
+            .wf-item {
+                width: 100%;
+                text-align: left;
+                margin: 0 0 2rem 0;
+                padding-left: 40px;
+            }
+
+            .wf-marker {
+                left: 20px;
+                top: 30px;
+                margin: 0;
+                transform: rotate(45deg) translateX(-50%);
+            }
+
+            .wf-item:hover .wf-marker {
+                transform: rotate(225deg) translateX(-50%);
+            }
+
+            .wf-content {
+                width: 100%;
+                margin: 0 !important;
+                transform: none !important;
+            }
+
+            .wf-content::before {
+                display: none;
+            }
+
+            .wf-item:nth-child(odd) .wf-content,
+            .wf-item:nth-child(even) .wf-content {
+                margin: 0;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold);
+        }
+    </style>
+</head>
+
+<body>
+
+ <section id="global-navbar">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #222;
+            --white: #ffffff;
+            --beige: #F5F5F0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:var(--font-sans);}
+        a{text-decoration:none !important;}
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top:0; left:0;
+            width:100%;
+            padding:1.3rem 0;
+      
+            z-index:999;
+            transition:0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background:var(--white);
+            box-shadow:0 2px 10px rgba(0,0,0,0.12);
+            padding:0.9rem 0;
+        }
+
+        /* NAV CONTAINER */
+        .nav-container {
+            max-width:1200px;
+            width:90%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        /* LOGO */
+        .logo img{
+            height:85px;
+            object-fit:contain;
+        }
+
+        /* DESKTOP MENU */
+        .nav-links {
+            display:none;
+            align-items:center;
+            gap:5rem;
+        }
+        .nav-links a {
+            color:var(--black);
+            font-size:0.9rem;
+            text-transform:uppercase;
+            letter-spacing:0.12em;
+        }
+        .nav-links a:hover { color:var(--gold) !important; }
+
+        /* DESKTOP DROPDOWN */
+        .dropdown {
+            position:relative;
+            cursor:pointer;
+        }
+        .dropdown-content {
+            display:none;
+            position:absolute;
+            top:100%;
+            left:0;
+            background:var(--white);
+            min-width:200px;
+            border-top:3px solid var(--gold);
+            box-shadow:0 8px 16px rgba(0,0,0,0.15);
+        }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        .dropdown-content a {
+            padding:12px 18px;
+            display:block;
+            font-size:0.85rem;
+            color:var(--black) !important;
+            border-bottom:1px solid #eee;
+        }
+        .dropdown-content a:hover {
+            background:var(--beige);
+            color:var(--gold) !important;
+        }
+
+        /* BUTTON */
+        .top-btn {
+            background:var(--gold);
+            color:var(--black);
+            border:none;
+            padding:0.45rem 1rem;
+            border-radius:4px;
+            font-size:0.75rem;
+            font-weight:600;
+            text-transform:uppercase;
+        }
+
+        /* MOBILE MENU BTN */
+        .mobile-btn {
+            display:block;
+            background:none;
+            border:none;
+            font-size:1.6rem;
+            color:var(--black);
+            cursor:pointer;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position:fixed;
+            top:0; left:-280px;
+            width:280px;
+            height:100vh;
+            padding:2rem 1.5rem;
+            background:#fff;
+            display:flex;
+            flex-direction:column;
+            gap:1rem;
+            box-shadow:5px 0 15px rgba(0,0,0,0.1);
+            transition:0.35s ease;
+            z-index:1001;
+        }
+        .sidebar.active { left:0; }
+
+        .sidebar a, .dropdown-btn {
+            padding:0.8rem 0;
+            border-bottom:1px solid #eee;
+            color:#222;
+            text-transform:uppercase;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .sidebar a:hover, .dropdown-btn:hover { color:var(--gold); }
+
+        .dropdown-items {
+            display:none;
+            flex-direction:column;
+            padding-left:1rem;
+        }
+        .dropdown-items.show { display:flex; }
+
+        .arrow { transition:0.3s; }
+        .arrow.rotate { transform:rotate(90deg); }
+
+        /* CLOSE BTN */
+        .close-btn {
+            background:none;
+            border:none;
+            font-size:1.8rem;
+            align-self:flex-end;
+            cursor:pointer;
+            color:var(--black);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            display:none;
+            z-index:1000;
+        }
+        .overlay.active { display:block; }
+
+        /* RESPONSIVE */
+        @media(min-width:768px){
+            .nav-links{display:flex;}
+            .mobile-btn{display:none;}
+            .sidebar{display:none;}
+        }
+    </style>
+
+
+    <!-- NAV HTML -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <a href="home.html" class="logo">
+                <img src="images/logo1.jpg" alt="Logo">
+            </a>
+
+            <div class="nav-links">
+
+                        <a href="home.html">Home</a>
+                   <a href="home.html" style="color: var(--gold) !important;">About</a>
+                    
+       
+
+                <div class="dropdown">
+                    <a href="product.html" class="drop-btn">Products</a>
+
+                    <div class="dropdown-content">
+                        <a href="mattress.html">Mattress</a>
+                        <a href="curtains.html">Curtains</a>
+                        <a href="sofa.html">Sofa</a>
+                        <a href="wallpaper.html">Wallpaper</a>
+                        <a href="carpet.html">Carpet</a>
+                        <a href="bed-cushion.html">Bed Cushion</a>
+                        <a href="pillows.html">Pillows</a>
+                    </div>
+                </div>
+
+             <a href="gallery.html">Gallery</a>
+
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <button class="top-btn" onclick="location.href='contact.html#appointment-form'">
+                <i class="fa-solid fa-calendar"></i> Book Appointment
+            </button>
+
+            <button class="mobile-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <button class="close-btn" id="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="dropdown-btn" id="products-toggle">
+            Products
+            <i class="fa-solid fa-chevron-right arrow" id="arrow"></i>
+        </div>
+
+        <div class="dropdown-items" id="products-menu">
+            <a href="mattress.html">Mattress</a>
+            <a href="curtains.html">Curtains</a>
+            <a href="sofa.html">Sofa</a>
+            <a href="wallpaper.html">Wallpaper</a>
+            <a href="carpet.html">Carpet</a>
+            <a href="bed-cushion.html">Bed Cushion</a>
+            <a href="pillows.html">Pillows</a>
+        </div>
+
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JS -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const productsToggle = document.getElementById("products-toggle");
+        const productsMenu = document.getElementById("products-menu");
+        const arrow = document.getElementById("arrow");
+
+        // Scroll effect
+        window.addEventListener("scroll", () => {
+            document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Open sidebar
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+
+        function closeSidebar() {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Mobile dropdown
+        productsToggle.addEventListener("click", () => {
+            productsMenu.classList.toggle("show");
+            arrow.classList.toggle("rotate");
+        });
+    </script>
+
+</section>
+    <!-- HERO SECTION -->
+    <header class="hero-modern">
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <h1 class="hero-title-large">Transform<br>Your Space</h1>
+                <p class="hero-text">The finest furniture, the most vibrant colors, the perfect home. We bring the
+                    Diamond standard to every corner of your life.</p>
+                <div class="btn-group">
+                    <a href="contact.html" class="btn-black">Start Project <i class="fa-solid fa-arrow-right"
+                            style="margin-left: 8px; font-size: 0.8em;"></i></a>
+                    <a href="#who-we-are" class="btn-white-outline">Learn More</a>
+                </div>
+                <p
+                    style="font-size: 0.75rem; color: #888; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase;">
+                    Recent Works</p>
+                <div class="mini-gallery">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        alt="Work 1" class="mini-thumb">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        alt="Work 2" class="mini-thumb">
+                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        alt="Work 3" class="mini-thumb">
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-bg-shape"></div>
+                <img src="https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Modern Interior Chair" class="hero-main-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- WHO WE ARE -->
+    <section id="who-we-are" class="section bg-beige">
+        <div class="container">
+            <div class="who-content reveal">
+                <span class="section-subtitle">Our Story</span>
+                <h2 class="section-title">Who We Are</h2>
+                <p class="who-text">At <span class="who-highlight">Diamond Home Decor</span>, luxury isn’t just a
+                    product—it’s an experience. Based in <span class="who-highlight">Pune</span>, we are known for
+                    offering premium furnishing solutions that transform everyday interiors into extraordinary lifestyle
+                    spaces.</p>
+                <p class="who-text">With years of experience, an eye for elegance, and a strong network of artisans and
+                    global suppliers, we provide everything your space needs—from custom upholstery to statement decor,
+                    all tailored to refined tastes.</p>
+                <div class="signer" style="justify-content: center;">
+                    <div class="signer-line"></div>
+                    <i class="fa-regular fa-gem" style="color: var(--color-gold); margin: 0 10px;"></i>
+                    <div class="signer-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT MAKES US DIFFERENT -->
+    <section id="difference" class="section bg-dark">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;" class="reveal">
+                <h2 class="section-title" style="color: white; margin-bottom: 1rem;">What Makes Us Different</h2>
+                <div style="width: 60px; height: 2px; background: var(--color-gold); margin: 0 auto;"></div>
+            </div>
+            <div class="diff-grid">
+                <div class="diff-card reveal">
+                    <span class="diff-number">01</span>
+                    <div class="diff-icon-box"><i class="fa-regular fa-star"></i></div>
+                    <h3 class="diff-title">Personalized Luxury</h3>
+                    <p class="diff-desc">Every design is a unique reflection of you. We tailor every fabric, finish, and
+                        curve to match your distinct personal style.</p>
+                </div>
+                <div class="diff-card reveal" style="transition-delay: 0.2s;">
+                    <span class="diff-number">02</span>
+                    <div class="diff-icon-box"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h3 class="diff-title">Premium Materials</h3>
+                    <p class="diff-desc">Sourced locally and internationally, we select only the finest woods, metals,
+                        and textiles to ensure enduring elegance.</p>
+                </div>
+                <div class="diff-card reveal" style="transition-delay: 0.4s;">
+                    <span class="diff-number">03</span>
+                    <div class="diff-icon-box"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <h3 class="diff-title">Bespoke Craftsmanship</h3>
+                    <p class="diff-desc">Attention to detail is our obsession. Our master artisans create custom pieces
+                        that are as durable as they are beautiful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
+<section id="workflow" style="padding:100px 0; background:#f8f6ef; font-family:'Lato', sans-serif;">
+
+    <!-- Heading -->
+    <div style="text-align:center; margin-bottom:60px;">
+        <span style="
+            font-size:13px;
+            letter-spacing:4px;
+            color:#d4af37;
+            font-weight:700;
+            text-transform:uppercase;
+        ">
+            Consult. Curate. Create.
+        </span>
+
+        <h2 style="
+            font-family:'Playfair Display', serif;
+            font-size:42px;
+            color:#1a1a1a;
+            margin-top:10px;
+        ">
+            Our Workflow
+        </h2>
+    </div>
+
+    <!-- Workflow Container -->
+    <div style="width:90%; max-width:1300px; margin:auto; position:relative;">
+
+        <!-- Gold horizontal line -->
+        <div style="
+            position:absolute;
+            top:110px;
+            left:0;
+            width:100%;
+            height:2px;
+            background:#e7d9b8;
+            z-index:0;
+        "></div>
+
+        <!-- Card Wrapper -->
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:25px;
+            z-index:2;
+            position:relative;
+            flex-wrap:wrap;
+        ">
+
+            <!-- CARD 1 -->
+            <div style="
+                background:#ffffff;
+                width:220px;
+                padding:40px 25px;
+                text-align:center;
+                border-radius:6px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.06);
+                position:relative;
+            ">
+                <div style="
+                    position:absolute;
+                    top:-20px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:2px;
+                    height:20px;
+                    background:#e7d9b8;
+                "></div>
+
+                <span style="
+                    position:absolute;
+                    top:15px;
+                    right:20px;
+                    font-size:26px;
+                    font-weight:700;
+                    color:#e7d9b8;
+                    font-family:'Playfair Display', serif;
+                ">01</span>
+
+                <h3 style="
+                    font-family:'Playfair Display', serif;
+                    font-size:20px;
+                    margin-bottom:10px;
+                    color:#1a1a1a;
+                ">Personalized Consultation</h3>
+
+                <p style="font-size:14px; color:#666;">
+                    We begin with an in-depth discussion to understand your taste, space, and lifestyle.
+                </p>
+            </div>
+
+            <!-- CARD 2 -->
+            <div style="
+                background:#ffffff;
+                width:220px;
+                padding:40px 25px;
+                text-align:center;
+                border-radius:6px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.06);
+                position:relative;
+            ">
+                <div style="
+                    position:absolute;
+                    top:-20px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:2px;
+                    height:20px;
+                    background:#e7d9b8;
+                "></div>
+
+                <span style="
+                    position:absolute;
+                    top:15px;
+                    right:20px;
+                    font-size:26px;
+                    font-weight:700;
+                    color:#e7d9b8;
+                ">02</span>
+
+                <h3 style="
+                    font-family:'Playfair Display', serif;
+                    font-size:20px;
+                    margin-bottom:10px;
+                    color:#1a1a1a;
+                ">Tailored Recommendations</h3>
+
+                <p style="font-size:14px; color:#666;">
+                    From fabric swatches to layout mockups, we help you choose what suits you best.
+                </p>
+            </div>
+
+            <!-- CARD 3 -->
+            <div style="
+                background:#ffffff;
+                width:220px;
+                padding:40px 25px;
+                text-align:center;
+                border-radius:6px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.06);
+                position:relative;
+            ">
+                <div style="
+                    position:absolute;
+                    top:-20px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:2px;
+                    height:20px;
+                    background:#e7d9b8;
+                "></div>
+
+                <span style="
+                    position:absolute;
+                    top:15px;
+                    right:20px;
+                    font-size:26px;
+                    font-weight:700;
+                    color:#e7d9b8;
+                ">03</span>
+
+                <h3 style="
+                    font-family:'Playfair Display', serif;
+                    font-size:20px;
+                    margin-bottom:10px;
+                    color:#1a1a1a;
+                ">Crafting with Precision</h3>
+
+                <p style="font-size:14px; color:#666;">
+                    Every piece is hand-finished by our skilled artisans, ensuring quality and consistency.
+                </p>
+            </div>
+
+            <!-- CARD 4 -->
+            <div style="
+                background:#ffffff;
+                width:220px;
+                padding:40px 25px;
+                text-align:center;
+                border-radius:6px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.06);
+                position:relative;
+            ">
+                <div style="
+                    position:absolute;
+                    top:-20px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:2px;
+                    height:20px;
+                    background:#e7d9b8;
+                "></div>
+
+                <span style="
+                    position:absolute;
+                    top:15px;
+                    right:20px;
+                    font-size:26px;
+                    font-weight:700;
+                    color:#e7d9b8;
+                ">04</span>
+
+                <h3 style="
+                    font-family:'Playfair Display', serif;
+                    font-size:20px;
+                    margin-bottom:10px;
+                    color:#1a1a1a;
+                ">Delivery & Setup</h3>
+
+                <p style="font-size:14px; color:#666;">
+                    Our team ensures seamless installation so you enjoy a stress-free luxury upgrade.
+                </p>
+            </div>
+
+            <!-- CARD 5 -->
+            <div style="
+                background:#ffffff;
+                width:220px;
+                padding:40px 25px;
+                text-align:center;
+                border-radius:6px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.06);
+                position:relative;
+            ">
+                <div style="
+                    position:absolute;
+                    top:-20px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:2px;
+                    height:20px;
+                    background:#e7d9b8;
+                "></div>
+
+                <span style="
+                    position:absolute;
+                    top:15px;
+                    right:20px;
+                    font-size:26px;
+                    font-weight:700;
+                    color:#e7d9b8;
+                ">05</span>
+
+                <h3 style="
+                    font-family:'Playfair Display', serif;
+                    font-size:20px;
+                    margin-bottom:10px;
+                    color:#1a1a1a;
+                ">Post-Service Support</h3>
+
+                <p style="font-size:14px; color:#666;">
+                    We offer maintenance, repair, and future customization options to extend product life.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+<section id="footer-section" style="width:100%; display:block;">
+
+<!-- =======================
+      FOOTER (INLINE CSS)
+=========================== -->
+<footer style="background:#111; color:#fff; padding:70px 0 0; font-family:'Lato', sans-serif;">
+
+  <div style="width:90%; max-width:1400px; margin:auto;">
+
+    <!-- Gold Line -->
+    <div style="
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, #d4af37, #f9e6a7, #d4af37);
+      margin-bottom:40px;
+    "></div>
+
+    <!-- GRID -->
+    <div class="footer-grid" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+    ">
+
+      <!-- BRAND -->
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; transform:translateY(-10px);">
+          <img 
+            src="images/logo1-removebg-preview.png"
+            alt="Diamond Logo"
+            style="width:160px; height:auto; display:block;"
+          >
+        </div>
+
+        <p style="
+          font-size:16px;
+          color:#ccc;
+          line-height:1.6;
+          margin-top:15px;
+        ">
+          Setting the benchmark for luxury interiors — where artistry, comfort,
+          and elegance blend seamlessly.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">QUICK LINKS</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html" style="text-decoration:none; color:#eee; font-size:16px;">Home</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./about.html" style="text-decoration:none; color:#eee; font-size:16px;">About Us</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html#services" style="text-decoration:none; color:#eee; font-size:16px;">Products</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./gallery.html" style="text-decoration:none; color:#eee; font-size:16px;">Gallery</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./contact.html" style="text-decoration:none; color:#eee; font-size:16px;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">CONTACT</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-location-dot" style="color:#d4af37; margin-right:10px;"></i>
+            101 Luxury Lane, Beverly Hills, CA
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-phone" style="color:#d4af37; margin-right:10px;"></i>
+            +1 (555) 123-4567
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-envelope" style="color:#d4af37; margin-right:10px;"></i>
+            design@diamonddecor.com
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:12px; margin-top:15px;">
+          <img src="images/gallery/Instagram_icon.png.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/facebook.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/linkedin.png" style="width:32px; height:32px; cursor:pointer;">
+       
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">OUR WORLD</div>
+
+        <p style="color:#ccc; font-size:17px; line-height:1.6;">
+          Discover handcrafted luxury, curated pieces, and timeless designs
+          that elevate your living spaces.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div style="
+      margin-top:50px;
+      border-top:1px solid #333;
+      padding:20px 0;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+    ">
+      © 2025 DIAMOND HOME DECOR. ALL RIGHTS RESERVED.<br>
+      DESIGNED & DEVELOPED BY 
+      <a href="https://dwi4u.com/index.html" target="_blank" style="color:#d4af37; text-decoration:none;">DW INNOVATION PVT. LTD.</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RESPONSIVE CSS INSIDE SECTION -->
+<style>
+  #footer-section .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 900px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+</section>
+
+    <!-- Footer Styles -->
+    <style>
+        .footer-grid {
+            font-size: 1.1rem;
+            /* Increased base font size */
+        }
+
+        .footer-heading {
+            font-size: 1.4rem;
+            /* Increased heading size */
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links li a {
+            font-size: 1.1rem;
+            /* Increased link size */
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: var(--color-gold);
+        }
+
+        .contact-info li {
+            font-size: 1.1rem;
+            /* Increased contact info size */
+            margin-bottom: 0.8rem;
+        }
+
+        .copyright {
+            font-size: 1rem;
+            /* Slightly larger copyright text */
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        /* =========================================
+           NAVBAR LOGIC
+           ========================================= */
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Change background on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+
+            // Navbar bg logic for visibility when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                navbar.classList.add('scrolled');
+            } else if (window.scrollY <= 50) {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        /* =========================================
+           PAGE CONTENT LOGIC
+           ========================================= */
+
+        // Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger once on load
+
+        /* =========================================
+           LIGHTBOX LOGIC
+           ========================================= */
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const captionText = document.getElementById('caption');
+
+        function openLightbox(imgElement) {
+            lightbox.style.display = "block";
+            lightboxImg.src = imgElement.src;
+            captionText.innerHTML = imgElement.alt;
+            document.body.style.overflow = "hidden"; // Disable scroll
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto"; // Enable scroll
+        }
+
+        // Close on clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+ <a href="https://wa.me/9195952 24171" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float i {
+            margin-top: 2px;
+        }
+    </style>
+</body>
+
+</html>

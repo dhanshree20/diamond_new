@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Gallery | Meghrup Linen & Décor</title>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --color-gold: #c8a349;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        body {
+            margin: 0;
+            background: #fdf7ef;
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .bg-beige {
+            background: #f5efe6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 40px;
+            font-weight: 600;
+            color: #262626;
+        }
+
+        .section-subtitle {
+            color: var(--color-gold);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        /* --- GALLERY STYLES --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 280px);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+            transform: scale(0);
+            transition: transform 0.35s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1);
+        }
+
+        /* Mosaic Layout */
+        .gallery-item:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: 1;
+            grid-row: 2 / span 2;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .gallery-item:nth-child(6) {
+            grid-column: 3;
+            grid-row: 2 / span 2;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-lightbox:hover {
+            color: var(--color-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-rows: repeat(3, 200px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                height: 300px;
+                grid-column: auto !important;
+                grid-row: auto !important;
+            }
+
+            .lightbox-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- ============================
+     NAVBAR SECTION (COMPLETE)
+============================ -->
+
+<!-- ============================
+     UPDATED NAVBAR SECTION
+============================ -->
+
+<section id="global-navbar">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #222;
+            --white: #ffffff;
+            --beige: #F5F5F0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:var(--font-sans);}
+        a{text-decoration:none !important;}
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top:0; left:0;
+            width:100%;
+            padding:1.3rem 0;
+            background:#f5efe6;
+            z-index:999;
+            transition:0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background:var(--white);
+            box-shadow:0 2px 10px rgba(0,0,0,0.12);
+            padding:0.9rem 0;
+        }
+
+        /* NAV CONTAINER */
+        .nav-container {
+            max-width:1200px;
+            width:90%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        /* LOGO */
+        .logo img{
+            height:85px;
+            object-fit:contain;
+        }
+
+        /* DESKTOP MENU */
+        .nav-links {
+            display:none;
+            align-items:center;
+            gap:5rem;
+        }
+        .nav-links a {
+            color:var(--black);
+            font-size:0.9rem;
+            text-transform:uppercase;
+            letter-spacing:0.12em;
+        }
+        .nav-links a:hover { color:var(--gold) !important; }
+
+        /* DESKTOP DROPDOWN */
+        .dropdown {
+            position:relative;
+            cursor:pointer;
+        }
+        .dropdown-content {
+            display:none;
+            position:absolute;
+            top:100%;
+            left:0;
+            background:var(--white);
+            min-width:200px;
+            border-top:3px solid var(--gold);
+            box-shadow:0 8px 16px rgba(0,0,0,0.15);
+        }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        .dropdown-content a {
+            padding:12px 18px;
+            display:block;
+            font-size:0.85rem;
+            color:var(--black) !important;
+            border-bottom:1px solid #eee;
+        }
+        .dropdown-content a:hover {
+            background:var(--beige);
+            color:var(--gold) !important;
+        }
+
+        /* BUTTON */
+        .top-btn {
+            background:var(--gold);
+            color:var(--black);
+            border:none;
+            padding:0.45rem 1rem;
+            border-radius:4px;
+            font-size:0.75rem;
+            font-weight:600;
+            text-transform:uppercase;
+        }
+
+        /* MOBILE MENU BTN */
+        .mobile-btn {
+            display:block;
+            background:none;
+            border:none;
+            font-size:1.6rem;
+            color:var(--black);
+            cursor:pointer;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position:fixed;
+            top:0; left:-280px;
+            width:280px;
+            height:100vh;
+            padding:2rem 1.5rem;
+            background:#fff;
+            display:flex;
+            flex-direction:column;
+            gap:1rem;
+            box-shadow:5px 0 15px rgba(0,0,0,0.1);
+            transition:0.35s ease;
+            z-index:1001;
+        }
+        .sidebar.active { left:0; }
+
+        .sidebar a, .dropdown-btn {
+            padding:0.8rem 0;
+            border-bottom:1px solid #eee;
+            color:#222;
+            text-transform:uppercase;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .sidebar a:hover, .dropdown-btn:hover { color:var(--gold); }
+
+        .dropdown-items {
+            display:none;
+            flex-direction:column;
+            padding-left:1rem;
+        }
+        .dropdown-items.show { display:flex; }
+
+        .arrow { transition:0.3s; }
+        .arrow.rotate { transform:rotate(90deg); }
+
+        /* CLOSE BTN */
+        .close-btn {
+            background:none;
+            border:none;
+            font-size:1.8rem;
+            align-self:flex-end;
+            cursor:pointer;
+            color:var(--black);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            display:none;
+            z-index:1000;
+        }
+        .overlay.active { display:block; }
+
+        /* RESPONSIVE */
+        @media(min-width:768px){
+            .nav-links{display:flex;}
+            .mobile-btn{display:none;}
+            .sidebar{display:none;}
+        }
+    </style>
+
+
+    <!-- NAV HTML -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <a href="home.html" class="logo">
+                <img src="images/logo1.jpg" alt="Logo">
+            </a>
+
+            <div class="nav-links">
+
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                  
+                    <a href="product.html" style="color: var(--gold) !important;">Products</a>
+
+                    <div class="dropdown-content">
+                        <a href="mattress.html">Mattress</a>
+                        <a href="curtains.html">Curtains</a>
+                        <a href="sofa.html">Sofa</a>
+                        <a href="wallpaper.html">Wallpaper</a>
+                        <a href="carpet.html">Carpet</a>
+                        <a href="bed-cushion.html">Bed Cushion</a>
+                        <a href="pillows.html">Pillows</a>
+                    </div>
+                </div>
+
+          <a href="gallery.html" class="drop-btn">Gallery</a>
+
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <button class="top-btn" onclick="location.href='contact.html#appointment-form'">
+                <i class="fa-solid fa-calendar"></i> Book Appointment
+            </button>
+
+            <button class="mobile-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <button class="close-btn" id="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="dropdown-btn" id="products-toggle">
+            Products
+            <i class="fa-solid fa-chevron-right arrow" id="arrow"></i>
+        </div>
+
+        <div class="dropdown-items" id="products-menu">
+            <a href="mattress.html">Mattress</a>
+            <a href="curtains.html">Curtains</a>
+            <a href="sofa.html">Sofa</a>
+            <a href="wallpaper.html">Wallpaper</a>
+            <a href="carpet.html">Carpet</a>
+            <a href="bed-cushion.html">Bed Cushion</a>
+            <a href="pillows.html">Pillows</a>
+        </div>
+
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JS -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const productsToggle = document.getElementById("products-toggle");
+        const productsMenu = document.getElementById("products-menu");
+        const arrow = document.getElementById("arrow");
+
+        // Scroll effect
+        window.addEventListener("scroll", () => {
+            document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Open sidebar
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+
+        function closeSidebar() {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Mobile dropdown
+        productsToggle.addEventListener("click", () => {
+            productsMenu.classList.toggle("show");
+            arrow.classList.toggle("rotate");
+        });
+    </script>
+
+</section>
+
+    <!-- =======================  
+        GALLERY SECTION
+    ======================= -->
+<section id="products-page" style="padding: 80px 20px; background: #f5efe6; font-family: 'Lato', sans-serif;">
+    <div style="max-width: 1200px; margin: auto;">
+
+        <!-- Section Header -->
+        <div style="text-align:center; margin-bottom: 50px;">
+            <span style="color:#C8A349; text-transform:uppercase; letter-spacing:2px; font-weight:700;">
+                Our Products
+            </span>
+            <h2 style="
+                font-family:'Playfair Display', serif;
+                font-size:40px;
+                font-weight:600;
+                color:#222;
+                margin:10px 0;
+            ">Premium Furnishing Collection</h2>
+            <div style="width:70px; height:3px; background:#C8A349; margin:15px auto;"></div>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div style="
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        ">
+
+            <!-- PRODUCT CARD 1 -->
+            <div style="
+                background:white;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 6px 18px rgba(0,0,0,0.1);
+                transition:.3s;
+            ">
+                <img src="images/hero1.jpg" style="width:100%; height:230px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <h3 style="
+                        font-family:'Playfair Display', serif;
+                        text-transform:uppercase;
+                        letter-spacing:1px;
+                        font-size:20px;
+                        color:#222;
+                        margin-bottom:10px;
+                    ">Mattress</h3>
+                    <p style="color:#555; font-size:15px; line-height:1.6;">
+                        luxury comfort mattresses designed
+                        for restful sleep and long-lasting support.
+                    </p>
+                    <a href="mattress.html" style="
+                        display:inline-block;
+                        margin-top:15px;
+                        padding:10px 20px;
+                        background:#C8A349;
+                        color:white;
+                        border-radius:4px;
+                        text-transform:uppercase;
+                        font-size:14px;
+                        letter-spacing:1px;
+                    ">View More Details</a>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 2 -->
+            <div style="
+                background:white;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 6px 18px rgba(0,0,0,0.1);
+            ">
+                <img src="images/hero3.jpg" style="width:100%; height:230px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <h3 style="
+                        font-family:'Playfair Display', serif;
+                        text-transform:uppercase;
+                        letter-spacing:1px;
+                        font-size:20px;
+                        color:#222;
+                    ">Curtains</h3>
+                    <p style="color:#555; font-size:15px; line-height:1.6;">
+                        Designer luxury curtains crafted with premium fabrics, 
+                        and custom stitching.
+                    </p>
+                    <a href="curtains.html" style="
+                        display:inline-block;
+                        margin-top:15px;
+                        padding:10px 20px;
+                        background:#C8A349;
+                        color:white;
+                        border-radius:4px;
+                        text-transform:uppercase;
+                        font-size:14px;
+                        letter-spacing:1px;
+                    ">View More Details</a>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 3 -->
+            <div style="
+                background:white;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 6px 18px rgba(0,0,0,0.1);
+            ">
+                <img src="images/sofa.jpg" style="width:100%; height:230px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <h3 style="
+                        font-family:'Playfair Display', serif;
+                        text-transform:uppercase;
+                        letter-spacing:1px;
+                        font-size:20px;
+                        color:#222;
+                    ">Sofa</h3>
+                    <p style="color:#555; font-size:15px; line-height:1.6;">
+                        Custom-made luxury sofas with plush foam, premium fabrics, and timeless craftsmanship.
+                    </p>
+                    <a href="sofa.html" style="
+                        display:inline-block;
+                        margin-top:15px;
+                        padding:10px 20px;
+                        background:#C8A349;
+                        color:white;
+                        border-radius:4px;
+                        text-transform:uppercase;
+                        font-size:14px;
+                        letter-spacing:1px;
+                    ">View More Details</a>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 4 -->
+            <div style="
+                background:white;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 6px 18px rgba(0,0,0,0.1);
+            ">
+                <img src="images/wallpaper.jpg" style="width:100%; height:230px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <h3 style="
+                        font-family:'Playfair Display', serif;
+                        text-transform:uppercase;
+                        letter-spacing:1px;
+                        font-size:20px;
+                        color:#222;
+                    ">Wallpaper</h3>
+                    <p style="color:#555; font-size:15px; line-height:1.6;">
+                        Designer wallpapers including 3D textures, luxury murals, and premium washable surfaces.
+                    </p>
+                    <a href="wallpaper.html" style="
+                        display:inline-block;
+                        margin-top:15px;
+                        padding:10px 20px;
+                        background:#C8A349;
+                        color:white;
+                        border-radius:4px;
+                        text-transform:uppercase;
+                        font-size:14px;
+                        letter-spacing:1px;
+                    ">View More Details</a>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 5 -->
+            <div style="
+                background:white;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 6px 18px rgba(0,0,0,0.1);
+            ">
+                <img src="images/carpets.jpg" style="width:100%; height:230px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <h3 style="
+                        font-family:'Playfair Display', serif;
+                        text-transform:uppercase;
+                        letter-spacing:1px;
+                        font-size:20px;
+                        color:#222;
+                    ">Carpet</h3>
+                    <p style="color:#555; font-size:15px; line-height:1.6;">
+                        Elegant Persian, modern, and hand-tufted carpets that bring warmth and richness to any space.
+                    </p>
+                    <a href="carpet.html" style="
+                        display:inline-block;
+                        margin-top:15px;
+                        padding:10px 20px;
+                        background:#C8A349;
+                        color:white;
+                        border-radius:4px;
+                        text-transform:uppercase;
+                        font-size:14px;
+                        letter-spacing:1px;
+                    ">View More Details</a>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 6 -->
+            <div style="
+                background:white;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 6px 18px rgba(0,0,0,0.1);
+            ">
+                <img src="images/pillow_01.jpg" style="width:100%; height:230px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <h3 style="
+                        font-family:'Playfair Display', serif;
+                        text-transform:uppercase;
+                        letter-spacing:1px;
+                        font-size:20px;
+                        color:#222;
+                    ">Pillows</h3>
+                    <p style="color:#555; font-size:15px; line-height:1.6;">
+                        Premium pillows with ultra-soft fillings, ergonomic support, and luxury comfort.
+                    </p>
+                    <a href="pillows.html" style="
+                        display:inline-block;
+                        margin-top:15px;
+                        padding:10px 20px;
+                        background:#C8A349;
+                        color:white;
+                        border-radius:4px;
+                        text-transform:uppercase;
+                        font-size:14px;
+                        letter-spacing:1px;
+                    ">View More Details</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- =====================
+         LIGHTBOX MODAL
+    ===================== -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        function openLightbox(img) {
+            document.getElementById("lightbox").style.display = "block";
+            document.getElementById("lightbox-img").src = img.src;
+            document.getElementById("caption").innerHTML = img.alt;
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+
+
+
+
+<!-- ============================
+     LUXURY FOOTER (MATCHED EXACT)
+============================ -->
+<!-- ============================
+     LUXURY FOOTER (LATO ENFORCED)
+============================ -->
+<section id="global-footer">
+
+  <!-- Force-load Google fonts via @import inside style (works even if section is included mid-page) -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+  </style>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{
+      --gold:#c8a349;
+      --dark-bg:#111;
+      --text-light:#ddd;
+      --text-muted:#999;
+    }
+
+    /* Force Lato everywhere inside footer with high specificity */
+    #global-footer,
+    #global-footer * {
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      font-family: 'Lato', Arial, sans-serif !important;
+      box-sizing: border-box;
+    }
+
+    footer{
+      background:var(--dark-bg);
+      padding:90px 20px 40px;
+      color:#fff;
+      font-size:17.6px; /* body font size requested */
+      line-height:1.7;
+    }
+
+    .footer-container{ max-width:1300px; margin:0 auto; }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr 0.7fr 1fr;
+      gap:4rem;
+      align-items:start;
+    }
+
+    /* Brand */
+    .footer-logo-wrap{ display:flex; align-items:center; gap:12px; }
+    .footer-logo-wrap i{ font-size:2.7rem; color:var(--gold); }
+    /* Keep Playfair for the logo text only (explicitly override to Playfair) */
+    .footer-logo-text{
+      font-family:'Playfair Display', serif !important;
+      font-size:1.8rem;
+      font-weight:700;
+      color:var(--gold);
+      letter-spacing:2px;
+    }
+
+    .footer-desc{
+      margin-top:1.2rem;
+      color:var(--text-light);
+      max-width:420px;
+      font-size:17.6px;
+    }
+
+    /* Headings use Playfair (explicitly set) */
+    .footer-heading{
+      font-family:'Playfair Display', serif !important;
+      font-size:1.6rem;
+      color:var(--gold);
+      margin-bottom:1.5rem;
+      letter-spacing:2px;
+      font-weight:600;
+    }
+
+    /* Links & Contact - ensure Lato with exact size */
+    .footer-links li{ list-style:none; margin-bottom:.8rem; }
+    .footer-links li a{
+      color:var(--text-light);
+      font-size:17.6px;
+      text-decoration:none;
+      transition:color .25s;
+      display:inline-block;
+    }
+    .footer-links li a:hover{ color:var(--gold); }
+
+    .contact-info{ padding:0; margin:0; }
+    .contact-info li{ list-style:none; margin-bottom:1rem; color:var(--text-light); font-size:17.6px; }
+    .contact-info li i{ color:var(--gold); margin-right:12px; font-size:1.2rem; }
+
+    .social-icon{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:42px; height:42px; border:2px solid var(--gold); border-radius:50%;
+      color:var(--text-light); font-size:1.2rem; transition:0.25s;
+      margin-top:10px;
+    }
+    .social-icon:hover{ color:var(--gold); border-color:var(--gold); }
+
+    .footer-bottom{
+      text-align:center; margin-top:60px; padding-top:20px; border-top:1px solid #333;
+      color:#bbb; font-size:17px;
+    }
+    .footer-bottom a{ color:var(--gold); text-decoration:none; font-style:italic; }
+
+    /* Responsive */
+    @media (max-width:900px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:650px){
+      .footer-grid{ grid-template-columns:1fr; text-align:center; gap:2rem; }
+      .footer-logo-wrap{ justify-content:center; }
+    }
+  </style>
+
+  <!-- FOOTER HTML -->
+<section id="footer-section" style="width:100%; display:block;">
+
+<!-- =======================
+      FOOTER (INLINE CSS)
+=========================== -->
+<footer style="background:#111; color:#fff; padding:70px 0 0; font-family:'Lato', sans-serif;">
+
+  <div style="width:90%; max-width:1400px; margin:auto;">
+
+    <!-- Gold Line -->
+    <div style="
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, #d4af37, #f9e6a7, #d4af37);
+      margin-bottom:40px;
+    "></div>
+
+    <!-- GRID -->
+    <div class="footer-grid" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+    ">
+
+      <!-- BRAND -->
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; transform:translateY(-10px);">
+          <img 
+            src="images/logo1-removebg-preview.png"
+            alt="Diamond Logo"
+            style="width:160px; height:auto; display:block;"
+          >
+        </div>
+
+        <p style="
+          font-size:16px;
+          color:#ccc;
+          line-height:1.6;
+          margin-top:15px;
+        ">
+          Setting the benchmark for luxury interiors — where artistry, comfort,
+          and elegance blend seamlessly.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">QUICK LINKS</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html" style="text-decoration:none; color:#eee; font-size:16px;">Home</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./about.html" style="text-decoration:none; color:#eee; font-size:16px;">About Us</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html#services" style="text-decoration:none; color:#eee; font-size:16px;">Products</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./gallery.html" style="text-decoration:none; color:#eee; font-size:16px;">Gallery</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./contact.html" style="text-decoration:none; color:#eee; font-size:16px;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">CONTACT</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-location-dot" style="color:#d4af37; margin-right:10px;"></i>
+            101 Luxury Lane, Beverly Hills, CA
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-phone" style="color:#d4af37; margin-right:10px;"></i>
+            +1 (555) 123-4567
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-envelope" style="color:#d4af37; margin-right:10px;"></i>
+            design@diamonddecor.com
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:12px; margin-top:15px;">
+          <img src="images/gallery/Instagram_icon.png.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/facebook.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/linkedin.png" style="width:32px; height:32px; cursor:pointer;">
+       
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">OUR WORLD</div>
+
+        <p style="color:#ccc; font-size:17px; line-height:1.6;">
+          Discover handcrafted luxury, curated pieces, and timeless designs
+          that elevate your living spaces.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div style="
+      margin-top:50px;
+      border-top:1px solid #333;
+      padding:20px 0;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+    ">
+      © 2025 DIAMOND HOME DECOR. ALL RIGHTS RESERVED.<br>
+      DESIGNED & DEVELOPED BY 
+      <a href="https://dwi4u.com/index.html" target="_blank" style="color:#d4af37; text-decoration:none;">DW INNOVATION PVT. LTD.</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RESPONSIVE CSS INSIDE SECTION -->
+<style>
+  #footer-section .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 900px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+</section>
+</section>
+
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919595224171" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float i {
+            margin-top: 2px;
+        }
+    </style>
+</body>
+
+</html>

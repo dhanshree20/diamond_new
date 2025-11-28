@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Home Decor | Luxury Interiors</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Hero Slider -->
+    <div class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active" style="background-image: url('images/slide1.jpg');">
+                <div class="slide-content">
+                    <span class="section-subtitle">Welcome to</span>
+                    <h1>Diamond Home Decor</h1>
+                    <p class="hero-desc">Transform your space with our exquisite interior designs</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('images/slide2.jpg');">
+                <div class="slide-content">
+                    <span class="section-subtitle">Luxury</span>
+                    <h1>Redefined</h1>
+                    <p class="hero-desc">Experience elegance in every corner of your home</p>
+                    <a href="#portfolio" class="btn btn-primary">View Our Work</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('images/slide3.jpg');">
+                <div class="slide-content">
+                    <span class="section-subtitle">Exceptional</span>
+                    <h1>Design Solutions</h1>
+                    <p class="hero-desc">Tailored interiors that reflect your unique style</p>
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <i class="fa-regular fa-gem"></i>
+                DIAMOND
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#process">Workflow</a>
+                <a href="contact.html" class="btn-outline">Contact Us</a>
+            </div>
+
+            <!-- Top Right Button -->
+            <button class="top-right-btn" onclick="handleTopRightAction()">
+                <i class="fa-solid fa-calendar"></i>
+                Book Appointment
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#process">Workflow</a>
+            <a href="contact.html" style="border: 1px solid #000; display: inline-block; margin: 10px auto; padding: 10px 30px;">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <!-- Background Image -->
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Luxury Living Room">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content reveal">
+            <p class="hero-eyebrow">Est. 2024 • Luxury Interiors</p>
+            <h1 class="hero-title">
+                Crafting Comfort. <br>
+                <span>Creating Class.</span>
+            </h1>
+            <p class="hero-desc">
+                Where timeless elegance meets modern living. We design spaces that reflect your prestige and personality.
+            </p>
+            <a href="#contact" class="btn-primary">
+                Explore Collection
+            </a>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <i class="fa-solid fa-chevron-down" style="font-size: 1.5rem;"></i>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-beige">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Image Grid -->
+                <div class="about-images reveal" style="flex: 1;">
+                    <div class="image-grid">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Detail">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Room">
+                    </div>
+                    <!-- Decorative Border -->
+                    <div class="about-border"></div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="about-content reveal" style="flex: 1;">
+                    <span class="section-subtitle">Who We Are</span>
+                    <h2 class="section-title">
+                        The Essence of <br> <span>True Luxury</span>
+                    </h2>
+                    <p class="about-desc">
+                        At Diamond Home Decor, we believe that a home is more than just a place to live—it is a sanctuary, a gallery of your life's achievements. Our design philosophy is rooted in the balance of aesthetic beauty and functional comfort.
+                    </p>
+                    <p class="about-desc">
+                        From bespoke furniture selection to complete architectural renovations, our team of world-class designers meticulously curates every square inch of your space.
+                    </p>
+                    <div class="signer">
+                        <div class="signer-line"></div>
+                        <span class="signer-name">Victoria Sterling, Lead Designer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Services -->
+    <section id="services" class="section bg-white">
+        <div class="container" style="text-align: center;">
+            <span class="section-subtitle">Our Expertise</span>
+            <h2 class="section-title">Signature Services</h2>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3>Bespoke Furnishing</h3>
+                    <p>
+                        Custom-designed furniture pieces tailored to fit your space perfectly, utilizing the finest leathers, woods, and fabrics from around the globe.
+                    </p>
+                    <a href="#contact" class="service-link">Learn More</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-compass"></i>
+                    </div>
+                    <h3>Interior Architecture</h3>
+                    <p>
+                        Structural reimagining of your interiors. We move walls to create flow, light, and the open-concept luxury you desire.
+                    </p>
+                    <a href="#contact" class="service-link">Learn More</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-lightbulb"></i>
+                    </div>
+                    <h3>Lighting & Decor</h3>
+                    <p>
+                        The art of illumination. We curate chandeliers, lamps, and art pieces that act as the jewelry of your home.
+                    </p>
+                    <a href="#contact" class="service-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us (Dark Mode Section) -->
+    <section id="why-us" class="section bg-dark">
+        <div class="container">
+            <div class="why-grid">
+                <div class="reveal">
+                    <h2 class="section-title" style="color: white;">Why Choose Diamond?</h2>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+                            <div class="feature-text">
+                                <h4>Uncompromising Quality</h4>
+                                <p>We partner exclusively with heritage artisans and top-tier manufacturers.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                            <div class="feature-text">
+                                <h4>Unique Personalization</h4>
+                                <p>No two projects are alike. Your home is a fingerprint of your identity.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                            <div class="feature-text">
+                                <h4>Seamless Execution</h4>
+                                <p>From concept to white-glove delivery, we handle every logistical detail.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="why-image reveal">
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dark Luxury Interior">
+                    <div class="corner-decor corner-bottom-right"></div>
+                    <div class="corner-decor corner-top-left"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="process" class="section bg-beige">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-subtitle">The Journey</span>
+                <h2 class="section-title">Our Workflow</h2>
+            </div>
+
+            <div class="process-container">
+                <div class="process-line"></div>
+
+                <div class="process-grid">
+                    <!-- Step 1 -->
+                    <div class="process-step step-active reveal">
+                        <div class="step-number">1</div>
+                        <h4>Consult</h4>
+                        <p>We meet to understand your vision, lifestyle, and aesthetic desires.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="process-step step-default reveal" style="transition-delay: 0.1s;">
+                        <div class="step-number">2</div>
+                        <h4>Concept</h4>
+                        <p>We present mood boards, 3D renders, and material samples.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="process-step step-default reveal" style="transition-delay: 0.2s;">
+                        <div class="step-number">3</div>
+                        <h4>Craft</h4>
+                        <p>Our artisans build your custom pieces and renovation begins.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="process-step step-final reveal" style="transition-delay: 0.3s;">
+                        <div class="step-number">4</div>
+                        <h4>Reveal</h4>
+                        <p>The final white-glove installation and the grand unveiling of your home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Consultation Section -->
+    <section id="contact" class="section bg-white">
+        <div class="container">
+            <div class="contact-card reveal">
+                <!-- Background decoration -->
+                <div class="contact-decor"></div>
+                
+                <div style="position: relative; z-index: 2;">
+                    <h2 class="section-title" style="color: white; font-size: 2rem;">Ready to Elevate Your Space?</h2>
+                    <p style="color: #aaa; font-weight: 300; max-width: 500px; margin: 0 auto;">Contact us for a private consultation with our senior designers. Let's discuss how we can bring your vision to life.</p>
+                    
+                    <form id="bookingForm" class="contact-form">
+                        <input type="text" placeholder="Your Name" class="form-input">
+                        <input type="email" placeholder="Email Address" class="form-input">
+                        <button type="button" onclick="handleBooking()" class="btn-submit">
+                            Request Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<section id="footer-section" style="width:100%; display:block;">
+
+<!-- =======================
+      FOOTER (INLINE CSS)
+=========================== -->
+<footer style="background:#111; color:#fff; padding:70px 0 0; font-family:'Lato', sans-serif;">
+
+  <div style="width:90%; max-width:1400px; margin:auto;">
+
+    <!-- Gold Line -->
+    <div style="
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, #d4af37, #f9e6a7, #d4af37);
+      margin-bottom:40px;
+    "></div>
+
+    <!-- GRID -->
+    <div class="footer-grid" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+    ">
+
+      <!-- BRAND -->
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; transform:translateY(-10px);">
+          <img 
+            src="images/logo1-removebg-preview.png"
+            alt="Diamond Logo"
+            style="width:160px; height:auto; display:block;"
+          >
+        </div>
+
+        <p style="
+          font-size:16px;
+          color:#ccc;
+          line-height:1.6;
+          margin-top:15px;
+        ">
+          Setting the benchmark for luxury interiors — where artistry, comfort,
+          and elegance blend seamlessly.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">QUICK LINKS</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html" style="text-decoration:none; color:#eee; font-size:16px;">Home</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./about.html" style="text-decoration:none; color:#eee; font-size:16px;">About Us</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./home.html#services" style="text-decoration:none; color:#eee; font-size:16px;">Products</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./gallery.html" style="text-decoration:none; color:#eee; font-size:16px;">Gallery</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./contact.html" style="text-decoration:none; color:#eee; font-size:16px;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">CONTACT</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-location-dot" style="color:#d4af37; margin-right:10px;"></i>
+            101 Luxury Lane, Beverly Hills, CA
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-phone" style="color:#d4af37; margin-right:10px;"></i>
+            +1 (555) 123-4567
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-envelope" style="color:#d4af37; margin-right:10px;"></i>
+            design@diamonddecor.com
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:12px; margin-top:15px;">
+          <img src="images/gallery/Instagram_icon.png.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/facebook.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/linkedin.png" style="width:32px; height:32px; cursor:pointer;">
+       
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">OUR WORLD</div>
+
+        <p style="color:#ccc; font-size:17px; line-height:1.6;">
+          Discover handcrafted luxury, curated pieces, and timeless designs
+          that elevate your living spaces.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div style="
+      margin-top:50px;
+      border-top:1px solid #333;
+      padding:20px 0;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+    ">
+      © 2025 DIAMOND HOME DECOR. ALL RIGHTS RESERVED.<br>
+      DESIGNED & DEVELOPED BY 
+      <a href="https://dwi4u.com/index.html" target="_blank" style="color:#d4af37; text-decoration:none;">DW INNOVATION PVT. LTD.</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RESPONSIVE CSS INSIDE SECTION -->
+<style>
+  #footer-section .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 900px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+</section>
+
+    <!-- JavaScript -->
+    <script src="home.js"></script>
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
