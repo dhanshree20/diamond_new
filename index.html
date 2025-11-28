@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Home Decor | Luxury Interiors</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+<section id="global-navbar">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #222;
+            --white: #ffffff;
+            --beige: #F5F5F0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:var(--font-sans);}
+        a{text-decoration:none !important;}
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top:0; left:0;
+            width:100%;
+            padding:1.3rem 0;
+         
+            z-index:999;
+            transition:0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background:var(--white);
+            box-shadow:0 2px 10px rgba(0,0,0,0.12);
+            padding:0.9rem 0;
+        }
+
+        /* NAV CONTAINER */
+        .nav-container {
+            max-width:1200px;
+            width:90%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        /* LOGO */
+        .logo img{
+            height:85px;
+            object-fit:contain;
+        }
+
+        /* DESKTOP MENU */
+        .nav-links {
+            display:none;
+            align-items:center;
+            gap:5rem;
+        }
+       /* DESKTOP MENU */
+.nav-links a {
+    color: white;   /* white at top */
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    transition: color 0.3s ease;
+}
+
+/* WHEN NAVBAR SCROLLS */
+.navbar.scrolled .nav-links a {
+    color: black !important;   /* turns black */
+}
+
+        .nav-links a:hover { color:var(--gold) !important; }
+
+        /* DESKTOP DROPDOWN */
+        .dropdown {
+            position:relative;
+            cursor:pointer;
+        }
+        .dropdown-content {
+            display:none;
+            position:absolute;
+            top:100%;
+            left:0;
+            background:var(--white);
+            min-width:200px;
+            border-top:3px solid var(--gold);
+            box-shadow:0 8px 16px rgba(0,0,0,0.15);
+        }
+        .dropdown:hover .dropdown-content { display:block; }
+
+        .dropdown-content a {
+            padding:12px 18px;
+            display:block;
+            font-size:0.85rem;
+            color:var(--black) !important;
+            border-bottom:1px solid #eee;
+        }
+        .dropdown-content a:hover {
+            background:var(--beige);
+            color:var(--gold) !important;
+        }
+
+        /* BUTTON */
+        .top-btn {
+            background:var(--gold);
+            color:var(--black);
+            border:none;
+            padding:0.45rem 1rem;
+            border-radius:4px;
+            font-size:0.75rem;
+            font-weight:600;
+            text-transform:uppercase;
+        }
+
+        /* MOBILE MENU BTN */
+        .mobile-btn {
+            display:block;
+            background:none;
+            border:none;
+            font-size:1.6rem;
+            color:var(--black);
+            cursor:pointer;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position:fixed;
+            top:0; left:-280px;
+            width:280px;
+            height:100vh;
+            padding:2rem 1.5rem;
+            background:#fff;
+            display:flex;
+            flex-direction:column;
+            gap:1rem;
+            box-shadow:5px 0 15px rgba(0,0,0,0.1);
+            transition:0.35s ease;
+            z-index:1001;
+        }
+        .sidebar.active { left:0; }
+
+        .sidebar a, .dropdown-btn {
+            padding:0.8rem 0;
+            border-bottom:1px solid #eee;
+            color:#222;
+            text-transform:uppercase;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .sidebar a:hover, .dropdown-btn:hover { color:var(--gold); }
+
+        .dropdown-items {
+            display:none;
+            flex-direction:column;
+            padding-left:1rem;
+        }
+        .dropdown-items.show { display:flex; }
+
+        .arrow { transition:0.3s; }
+        .arrow.rotate { transform:rotate(90deg); }
+
+        /* CLOSE BTN */
+        .close-btn {
+            background:none;
+            border:none;
+            font-size:1.8rem;
+            align-self:flex-end;
+            cursor:pointer;
+            color:var(--black);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            display:none;
+            z-index:1000;
+        }
+        .overlay.active { display:block; }
+
+        /* RESPONSIVE */
+        @media(min-width:768px){
+            .nav-links{display:flex;}
+            .mobile-btn{display:none;}
+            .sidebar{display:none;}
+        }
+    </style>
+
+
+    <!-- NAV HTML -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                <img src="images/logo1.jpg" alt="Logo">
+            </a>
+
+            <div class="nav-links">
+
+               
+                   <a href="index.html" style="color: var(--gold) !important;">Home</a>
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="product.html" class="drop-btn">Products</a>
+
+                    <div class="dropdown-content">
+                        <a href="mattress.html">Mattress</a>
+                        <a href="curtains.html">Curtains</a>
+                        <a href="sofa.html">Sofa</a>
+                        <a href="wallpaper.html">Wallpaper</a>
+                        <a href="carpet.html">Carpet</a>
+                        <a href="bed-cushion.html">Bed Cushion</a>
+                        <a href="pillows.html">Pillows</a>
+                    </div>
+                </div>
+
+             <a href="gallery.html">Gallery</a>
+
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <button class="top-btn" onclick="location.href='contact.html#appointment-form'">
+                <i class="fa-solid fa-calendar"></i> Book Appointment
+            </button>
+
+            <button class="mobile-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <button class="close-btn" id="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="dropdown-btn" id="products-toggle">
+            Products
+            <i class="fa-solid fa-chevron-right arrow" id="arrow"></i>
+        </div>
+
+        <div class="dropdown-items" id="products-menu">
+            <a href="mattress.html">Mattress</a>
+            <a href="curtains.html">Curtains</a>
+            <a href="sofa.html">Sofa</a>
+            <a href="wallpaper.html">Wallpaper</a>
+            <a href="carpet.html">Carpet</a>
+            <a href="bed-cushion.html">Bed Cushion</a>
+            <a href="pillows.html">Pillows</a>
+        </div>
+
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JS -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const productsToggle = document.getElementById("products-toggle");
+        const productsMenu = document.getElementById("products-menu");
+        const arrow = document.getElementById("arrow");
+
+        // Scroll effect
+        window.addEventListener("scroll", () => {
+            document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Open sidebar
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+
+        function closeSidebar() {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Mobile dropdown
+        productsToggle.addEventListener("click", () => {
+            productsMenu.classList.toggle("show");
+            arrow.classList.toggle("rotate");
+        });
+    </script>
+
+</section>
+
+    
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="mobile-menu-btn">
+        
+            </button>
+      
+
+   
+ 
+
+    <!-- Hero Section -->
+    <header class="hero">
+
+        <!-- Background Slideshow -->
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('images/hero1.jpg');"></div>
+            <div class="slide" style="background-image: url('images/hero2.jpg');"></div>
+            <div class="slide" style="background-image: url('images/hero3.jpg');"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content reveal">
+            <p class="hero-eyebrow">Est. 2024 • Luxury Interiors</p>
+            <h1 class="hero-title">
+                Crafting Comfort. <br>
+                <span>Creating Class.</span>
+            </h1>
+            <p class="hero-desc">
+                Where timeless elegance meets modern living. We design spaces that reflect your prestige and
+                personality.
+            </p>
+            <a href="#contact" class="btn-primary">
+                Explore Collection
+            </a>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <i class="fa-solid fa-chevron-down" style="font-size: 1.5rem;"></i>
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+      PREMIUM SHUTTER OPENING LOADER
+====================================== -->
+<!-- ============================
+     PREMIUM LUXURY LOADER
+============================= -->
+<section id="luxury-loader" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999999;
+  font-family: 'Playfair Display', serif;
+  transition: opacity .7s ease;
+">
+
+  <!-- Soft Glow Gradient Background -->
+  <div style="
+    position: absolute;
+    width: 180%;
+    height: 180%;
+    background: radial-gradient(circle at center,
+      rgba(255,215,128,0.25),
+      transparent 70%);
+    filter: blur(60px);
+    z-index: 1;
+  "></div>
+
+  <!-- Floating Gold Dust -->
+  <div style="
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.imgur.com/7K3Uq1v.png');
+    background-size: cover;
+    opacity: .25;
+    animation: dustMove 20s linear infinite;
+    z-index: 2;
+  "></div>
+
+  <!-- LEFT GLASS SHUTTER -->
+  <div style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 50%; height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.7);
+    border-right: 2px solid #C8A349;
+    z-index: 10;
+    animation: leftShutter 1.7s ease forwards 1.2s;
+  "></div>
+
+  <!-- RIGHT GLASS SHUTTER -->
+  <div style="
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.7);
+    border-left: 2px solid #C8A349;
+    z-index: 10;
+    animation: rightShutter 1.7s ease forwards 1.2s;
+  "></div>
+
+  <!-- Inner Glow Ring -->
+  <div style="
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid #C8A349;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    animation: rotateRing 1.4s linear infinite;
+    box-shadow: 0 0 20px rgba(200,163,73,0.4);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 5;
+  ">
+    <!-- Soft Light Beam -->
+    <div style="
+      position: absolute;
+      width: 200%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ffffff, transparent);
+      top: 50%;
+      left: -50%;
+      animation: beamMove 2s linear infinite;
+      opacity: .6;
+    "></div>
+  </div>
+
+  <!-- Logo -->
+  <img src="images/logo2.jpg" alt="Logo" style="
+    width: 190px;
+    opacity: 0;
+    animation: fadeInScale 1.6s ease forwards .5s;
+    z-index: 5;
+    filter: drop-shadow(0 3px 8px rgba(0,0,0,0.2));
+  ">
+
+  <!-- Tagline -->
+  <h2 style="
+    margin-top: 25px;
+    color: #C8A349;
+    font-size: 28px;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeInUp 1.3s ease forwards .9s;
+    position: relative;
+    z-index: 5;
+    text-shadow: 0 1px 6px rgba(200,163,73,0.3);
+  ">
+    The Essence of True Luxury
+    <span style="
+      position: absolute;
+      width: 70%;
+      height: 100%;
+      top: 0; left: -120%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.8), transparent);
+      animation: shineMove 2s ease-in-out infinite 2s;
+    "></span>
+  </h2>
+
+  <p style="
+    font-size: 15px;
+    margin-top: 10px;
+    color: #555;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease forwards 1.3s;
+    z-index: 5;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+  ">
+    Crafting luxury spaces with elegance and artistry
+  </p>
+</section>
+
+<!-- Animations -->
+<style>
+@keyframes rotateRing {
+  to { transform: rotate(360deg); }
+}
+@keyframes dustMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20%); }
+}
+@keyframes leftShutter {
+  to { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes rightShutter {
+  to { transform: translateX(100%); opacity: 0; }
+}
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes beamMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(200%); }
+}
+@keyframes shineMove {
+  0% { left: -120%; }
+  100% { left: 120%; }
+}
+</style>
+
+
+<!-- =====================================
+               ANIMATIONS
+====================================== -->
+<style>
+@keyframes rotateRing {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+@keyframes fadeInScale {
+  0% {opacity: 0; transform: scale(0.8);}
+  100% {opacity: 1; transform: scale(1);}
+}
+
+@keyframes fadeInUp {
+  0% {opacity: 0; transform: translateY(10px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes shineMove {
+  0% {left: -120%;}
+  100% {left: 150%;}
+}
+
+/* SHUTTER LEFT PANEL */
+@keyframes leftShutter {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-100%);}
+}
+
+/* SHUTTER RIGHT PANEL */
+@keyframes rightShutter {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(100%);}
+}
+</style>
+
+<!-- =====================================
+                 JS
+====================================== -->
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("luxury-loader");
+
+  setTimeout(() => {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 600);
+  }, 2200); // loader fully closes after shutters complete
+});
+</script>
+
+
+    <!-- About Section -->
+    <section id="about" class="section bg-beige">
+        <div class="container">
+            <div class="about-grid"
+                style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; width: 100%;">
+                <!-- Left Side: Image with Golden Border -->
+                <div class="reveal" style="width: 100%; max-width: 500px; margin: 0 auto;">
+                    <div style="border: 6px solid #D4AF37; padding: 8px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);">
+                        <img src="images/who.jpg" alt="Who We Are"
+                            style="width: 100%; height: 450px; object-fit: cover; display: block;">
+                    </div>
+                </div>
+
+                <!-- Right Side: Text Content -->
+                <div class="about-content reveal"
+                    style="width: 100%; max-width: 550px; text-align: left; padding-top: 0; margin: 0 auto;">
+                    <span class="section-subtitle">Who We Are</span>
+                    <h2 class="section-title">
+                        The Essence of <br> <span>True Luxury</span>
+                    </h2>
+                    <p class="about-desc">
+                        At Diamond Home Decor, luxury isn't just a product—it's an experience. Based in Pune, we are
+                        known for offering premium furnishing solutions that transform everyday interiors into
+                        extraordinary lifestyle spaces.
+                    </p>
+                    <p class="about-desc">
+                        With years of experience, an eye for elegance, and a strong network of artisans and global
+                        suppliers, we provide everything your space needs—from custom upholstery to statement decor, all
+                        tailored to refined tastes.
+                    </p>
+                    <div class="features-grid" style="margin-top: 20px;">
+                        <div class="feature-item" style="margin-bottom: 15px; display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check"
+                                style="color: #D4AF37; margin-right: 10px; margin-top: 3px;"></i>
+                            <span>Personalized luxury in every design</span>
+                        </div>
+                        <div class="feature-item" style="margin-bottom: 15px; display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check"
+                                style="color: #D4AF37; margin-right: 10px; margin-top: 3px;"></i>
+                            <span>Premium materials sourced locally & internationally</span>
+                        </div>
+                        <div class="feature-item" style="display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check"
+                                style="color: #D4AF37; margin-right: 10px; margin-top: 3px;"></i>
+                            <span>Bespoke craftsmanship with attention to detail</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Chairman's Message -->
+    <section id="chairman-message" class="section bg-beige" style="position: relative; overflow: hidden;">
+        <!-- Background Animation Elements -->
+        <div class="anim-circle circle-1"></div>
+        <div class="anim-circle circle-2"></div>
+
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="chairman-grid">
+                <!-- Image Side (Now Left) -->
+                <div class="chairman-image-wrapper reveal">
+                    <div class="chairman-bg-circle"></div>
+                    <div class="chairman-bg-dashed"></div> <!-- New dashed circle -->
+                    <div class="img-crop-container">
+                        <img src="images/chairman.jpeg" alt="Piyush Mane - Chairman" class="chairman-img">
+                    </div>
+                </div>
+
+                <!-- Content Side (Now Right) -->
+                <div class="chairman-content reveal">
+                    <span class="section-subtitle">From the Desk of</span>
+                    <h2 class="section-title">The Chairman</h2>
+                    <p class="chairman-text">
+                        "At Diamond Home Decor, our passion is to provide you with the finest furnishings that define
+                        comfort and style. We specialize in premium sofas, luxurious beds, designer curtains, and
+                        exquisite carpets. My goal is to ensure that every piece we offer enhances the beauty and warmth
+                        of your home."
+                    </p>
+                    <div class="chairman-signature">
+                        <span class="chairman-name">Piyush Mane</span>
+                        <span class="chairman-role">Founder & Chairman</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Signature Services -->
+    <section id="services" class="stacking-section">
+        <div class="stacking-container">
+            <!-- Section Header -->
+            <div class="stacking-header reveal">
+                <span class="stacking-subtitle">Our Expertise</span>
+                <h2 class="stacking-title">Signature Services</h2>
+                <div class="stacking-divider"></div>
+            </div>
+
+            <!-- The Stacking Cards Container -->
+            <div class="cards-wrapper">
+                <!-- Card 01: Custom Sofas -->
+                <div class="stacking-card">
+                    <div class="card-content">
+                        <div class="card-text-side">
+                            <div class="relative z-10">
+                                <div class="card-icon-circle">
+                                    <i class="fa-solid fa-couch"></i>
+                                </div>
+                                <h3 class="card-title">Custom Sofas & Upholstery</h3>
+                                <p class="card-desc">
+                                    Luxurious sofas tailored to your space. Choose fabrics, finish, size, and design.
+                                    Comfort meets couture in every stitch.
+                                </p>
+                                <button class="card-btn">
+                                    Explore Sofas <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-image-side">
+                            <img src="images/sofa.jpg" alt="Custom Sofa" class="card-img">
+                            <div class="img-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 02: Designer Curtains -->
+                <div class="stacking-card">
+                    <div class="card-content">
+                        <div class="card-text-side">
+                            <div class="relative z-10">
+                                <div class="card-icon-circle">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </div>
+                                <h3 class="card-title">Designer Curtains & Drapery</h3>
+                                <p class="card-desc">
+                                    From velvet to linen to sheer—our curtains are precision-stitched and styled for
+                                    elegance and insulation, framing your views perfectly.
+                                </p>
+                                <button class="card-btn">
+                                    View Fabrics <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-image-side">
+                            <img src="images/curtains.jpg" alt="Designer Curtains" class="card-img">
+                            <div class="img-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 03: Premium Blinds -->
+                <div class="stacking-card">
+                    <div class="card-content">
+                        <div class="card-text-side">
+                            <div class="relative z-10">
+                                <div class="card-icon-circle">
+                                    <i class="fa-solid fa-border-all"></i>
+                                </div>
+                                <h3 class="card-title">Premium Blinds</h3>
+                                <p class="card-desc">
+                                    Smart, stylish blinds for privacy, aesthetics, and light control. Manual and
+                                    automated options available for the modern home.
+                                </p>
+                                <button class="card-btn">
+                                    See Options <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-image-side">
+                            <img src="images/bedcushion.jpg" alt="Premium Bed Cushions" class="card-img">
+                            <div class="img-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 04: Bed Cushions -->
+                <div class="stacking-card">
+                    <div class="card-content">
+                        <div class="card-text-side">
+                            <div class="relative z-10">
+                                <div class="card-icon-circle">
+                                    <i class="fa-solid fa-bed"></i>
+                                </div>
+                                <h3 class="card-title">Bed Cushions & Pillows</h3>
+                                <p class="card-desc">
+                                    Enhance sleep quality and elevate your bed design with plush, handpicked materials
+                                    and textures that invite relaxation.
+                                </p>
+                                <button class="card-btn">
+                                    Get Cozy <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-image-side">
+                            <img src="images/bedcushion.jpg" alt="Bed Cushions & Pillows" class="card-img">
+                            <div class="img-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 05: Wallpaper -->
+                <div class="stacking-card">
+                    <div class="card-content">
+                        <div class="card-text-side">
+                            <div class="relative z-10">
+                                <div class="card-icon-circle">
+                                    <i class="fa-solid fa-paint-roller"></i>
+                                </div>
+                                <h3 class="card-title">Wallpaper & Wall Styling</h3>
+                                <p class="card-desc">
+                                    Curated international collections, 3D textures, and artistic murals that create a
+                                    statement wall and transform the room's atmosphere.
+                                </p>
+                                <button class="card-btn">
+                                    View Patterns <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-image-side">
+                            <img src="images/wallpaper.jpg" alt="Wallpaper & Wall Styling" class="card-img">
+                            <div class="img-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 06: Carpets -->
+                <div class="stacking-card">
+                    <div class="card-content">
+                        <div class="card-text-side">
+                            <div class="relative z-10">
+                                <div class="card-icon-circle">
+                                    <i class="fa-solid fa-rug"></i>
+                                </div>
+                                <h3 class="card-title">Carpets & Floor Accents</h3>
+                                <p class="card-desc">
+                                    From hand-tufted wool to Persian-inspired prints, our carpets add warmth, texture,
+                                    and perfect design harmony to any floor.
+                                </p>
+                                <button class="card-btn">
+                                    Discover Rugs <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-image-side">
+                            <img src="images/carpets.jpg" alt="Carpets & Floor Accents" class="card-img">
+                            <div class="img-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* --- Stacking Section CSS --- */
+        :root {
+            --brand-gold: #D4AF37;
+            --brand-cream: #F9F9F7;
+            --brand-dark: #1a1a1a;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        .stacking-section {
+            background-color: var(--brand-cream);
+            padding: 6rem 1rem;
+            position: relative;
+        }
+
+        .stacking-container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .stacking-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .stacking-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--brand-gold);
+            font-weight: 700;
+            font-size: 0.875rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stacking-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--brand-dark);
+            margin: 0;
+        }
+
+        .stacking-divider {
+            width: 6rem;
+            height: 4px;
+            background-color: var(--brand-gold);
+            margin: 1.5rem auto 0;
+        }
+
+        @media (min-width: 768px) {
+            .stacking-title {
+                font-size: 3rem;
+            }
+        }
+
+        .cards-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Card Styles */
+        .stacking-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 6rem;
+            transition: transform 0.5s ease;
+        }
+
+        /* Stacking Logic */
+        .stacking-card:nth-child(1) {
+            top: 8rem;
+        }
+
+        .stacking-card:nth-child(2) {
+            top: 9rem;
+        }
+
+        .stacking-card:nth-child(3) {
+            top: 10rem;
+        }
+
+        .stacking-card:nth-child(4) {
+            top: 11rem;
+        }
+
+        .stacking-card:nth-child(5) {
+            top: 12rem;
+        }
+
+        .stacking-card:nth-child(6) {
+            top: 13rem;
+            margin-bottom: 5rem;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .card-content {
+                flex-direction: row;
+            }
+        }
+
+        /* Text Side */
+        .card-text-side {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .card-text-side {
+                width: 50%;
+                padding: 3rem;
+                order: 1;
+            }
+        }
+
+        .card-icon-circle {
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--brand-gold);
+            font-size: 1.25rem;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.875rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .card-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .card-desc {
+            color: #4b5563;
+            font-family: var(--font-sans);
+            line-height: 1.625;
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            color: var(--brand-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        .card-btn:hover {
+            color: var(--brand-dark);
+        }
+
+        .card-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .card-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Image Side */
+        .card-image-side {
+            height: 16rem;
+            background-color: #f3f4f6;
+            position: relative;
+            overflow: hidden;
+            order: 1;
+        }
+
+        @media (min-width: 768px) {
+            .card-image-side {
+                width: 50%;
+                height: auto;
+                order: 2;
+            }
+        }
+
+        .card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .stacking-card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .stacking-card {
+                top: 0 !important;
+                margin-bottom: 2rem;
+            }
+
+            .card-content {
+                min-height: auto;
+            }
+
+            .card-image-side {
+                height: 250px;
+            }
+        }
+    </style>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="section bg-dark">
+        <div class="container">
+            <div class="why-grid">
+                <div class="reveal">
+                    <h2 class="section-title" style="color: white;">Why Choose Diamond?</h2>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                            <div class="feature-text">
+                                <h4>Curated Luxury</h4>
+                                <p>Each piece is designed to elevate—not decorate.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                            <div class="feature-text">
+                                <h4>Made-to-Measure</h4>
+                                <p>All furnishings are tailored to your space and sensibility.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-feather"></i></div>
+                            <div class="feature-text">
+                                <h4>Premium Materials</h4>
+                                <p>We use only the finest fabrics, foams, and finishes sourced from trusted global
+                                    partners.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                            <div class="feature-text">
+                                <h4>Design Support</h4>
+                                <p>Our team offers layout guidance, aesthetic advice, and technical input.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+                            <div class="feature-text">
+                                <h4>After-Sales Care</h4>
+                                <p>Luxury doesn't end with delivery. We offer refinishing, repairs, and upgrades.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-image reveal" style="height: 100%;">
+                    <img src="images/why.jpg" alt="Why Choose Diamond"
+                        style="height: 100%; width: 100%; object-fit: cover;">
+                    <div class="corner-decor corner-bottom-right"></div>
+                    <div class="corner-decor corner-top-left"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section id="contact" class="section bg-white">
+        <div class="container">
+            <div class="contact-card reveal">
+                <div class="contact-decor"></div>
+
+                <div style="position: relative; z-index: 2;">
+                    <h2 class="section-title" style="color: white; font-size: 2rem;">Ready to Elevate Your Space?</h2>
+                    <p style="color: #aaa; font-weight: 300; max-width: 500px; margin: 0 auto;">Contact us for a private
+                        consultation with our senior designers. Let's discuss how we can bring your vision to life.</p>
+
+                    <form id="bookingForm" class="contact-form">
+                        <input type="text" placeholder="Your Name" class="form-input">
+                        <input type="email" placeholder="Email Address" class="form-input">
+                        <button type="button" onclick="handleBooking()" class="btn-submit">
+                            Request Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="footer-section" style="width:100%; display:block;">
+
+<!-- =======================
+      FOOTER (INLINE CSS)
+=========================== -->
+<footer style="background:#111; color:#fff; padding:70px 0 0; font-family:'Lato', sans-serif;">
+
+  <div style="width:90%; max-width:1400px; margin:auto;">
+
+    <!-- Gold Line -->
+    <div style="
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, #d4af37, #f9e6a7, #d4af37);
+      margin-bottom:40px;
+    "></div>
+
+    <!-- GRID -->
+    <div class="footer-grid" style="
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+    ">
+
+      <!-- BRAND -->
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; transform:translateY(-10px);">
+          <img 
+            src="images/logo1-removebg-preview.png"
+            alt="Diamond Logo"
+            style="width:160px; height:auto; display:block;"
+          >
+        </div>
+
+        <p style="
+          font-size:16px;
+          color:#ccc;
+          line-height:1.6;
+          margin-top:15px;
+        ">
+          Setting the benchmark for luxury interiors — where artistry, comfort,
+          and elegance blend seamlessly.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">QUICK LINKS</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./index.html" style="text-decoration:none; color:#eee; font-size:16px;">Home</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./about.html" style="text-decoration:none; color:#eee; font-size:16px;">About Us</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./index.html#services" style="text-decoration:none; color:#eee; font-size:16px;">Products</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./gallery.html" style="text-decoration:none; color:#eee; font-size:16px;">Gallery</a>
+          </li>
+          <li style="list-style:none; margin:8px 0;">
+            <a href="./contact.html" style="text-decoration:none; color:#eee; font-size:16px;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">CONTACT</div>
+
+        <ul style="padding:0; margin:0;">
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-location-dot" style="color:#d4af37; margin-right:10px;"></i>
+            101 Luxury Lane, Beverly Hills, CA
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-phone" style="color:#d4af37; margin-right:10px;"></i>
+            +1 (555) 123-4567
+          </li>
+
+          <li style="list-style:none; margin:8px 0; color:#ccc;">
+            <i class="fa-solid fa-envelope" style="color:#d4af37; margin-right:10px;"></i>
+            design@diamonddecor.com
+          </li>
+        </ul>
+
+        <div style="display:flex; gap:12px; margin-top:15px;">
+          <img src="images/gallery/Instagram_icon.png.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/facebook.webp" style="width:32px; height:32px; cursor:pointer;">
+          <img src="images/gallery/linkedin.png" style="width:32px; height:32px; cursor:pointer;">
+       
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div>
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#d4af37;
+          margin-bottom:15px;
+          letter-spacing:1px;
+        ">OUR WORLD</div>
+
+        <p style="color:#ccc; font-size:17px; line-height:1.6;">
+          Discover handcrafted luxury, curated pieces, and timeless designs
+          that elevate your living spaces.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div style="
+      margin-top:50px;
+      border-top:1px solid #333;
+      padding:20px 0;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+    ">
+      © 2025 DIAMOND HOME DECOR. ALL RIGHTS RESERVED.<br>
+      DESIGNED & DEVELOPED BY 
+      <a href="https://dwi4u.com/index.html" target="_blank" style="color:#d4af37; text-decoration:none;">DW INNOVATION PVT. LTD.</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RESPONSIVE CSS INSIDE SECTION -->
+<style>
+  #footer-section .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 900px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #footer-section .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+</section>
+
+
+
+
+    <!-- WhatsApp Floating Button -->
+ <a href="https://wa.me/9195952 24171" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <style>
+        /* Footer Styles */
+        .footer-grid {
+            font-size: 1.1rem;
+            /* Increased base font size */
+        }
+
+        .footer-heading {
+            font-size: 1.4rem;
+            /* Increased heading size */
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links li a {
+            font-size: 1.1rem;
+            /* Increased link size */
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: var(--color-gold);
+        }
+
+        .contact-info li {
+            font-size: 1.1rem;
+            /* Increased contact info size */
+            margin-bottom: 0.8rem;
+        }
+
+        .copyright {
+            font-size: 1rem;
+            /* Slightly larger copyright text */
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float i {
+            margin-top: 2px;
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script src="home.js"></script>
+</body>
+
+</html>
